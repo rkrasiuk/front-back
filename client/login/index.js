@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import './index.scss';
+
 // TODO use framework form
 class Login extends Component {
   constructor(props) {
