@@ -22,24 +22,21 @@ class Login extends Component {
     const {login, password} = this.state;
     return (
       <div className="login">
-        <div className="login-form">
-          <form onSubmit={this.login}>
-            <input
-              type="text"
-              placeholder="Login"
-              value={login}
-              onChange={({target: {value}}) => this.setState({login: value})}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={({target: {value}}) => this.setState({password: value})}
-            />
-            <button type="submit">Login</button>
-          </form>
-        </div>
-        <div className="video" />
+        <form className="login-form" onSubmit={this.login}>
+          <input
+            type="text"
+            placeholder="Login"
+            value={login}
+            onChange={({target: {value}}) => this.setState({login: value})}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={({target: {value}}) => this.setState({password: value})}
+          />
+          <button className="login-button" type="submit">Login</button>
+        </form>
       </div>
     );
   }
