@@ -1,0 +1,32 @@
+.input {
+  margin-bottom: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  input {
+    height: 48px;
+    width: 100%;
+    display: block;
+    border: 1px solid #E1E4E8;
+    padding: 0 16px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+
+    &::placeholder {
+      transition: padding .3s;
+      color: #A6AEBC;
+    }
+
+    &:focus {
+      border: 2px solid #007FFF;
+      padding: 0 15px;
+
+      &::placeholder {
+        padding-left: 4px;
+      }
+    }
+  }
+}

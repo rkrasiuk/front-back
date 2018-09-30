@@ -7,7 +7,8 @@
         "root": [ "./" ],
         "alias": {
           "enums": "./imports/enums",
-          "collections": "./imports/collections"
+          "collections": "./imports/collections",
+          "components": "./imports/components"
         }
       }
     ]
