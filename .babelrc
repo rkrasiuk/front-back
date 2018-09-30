@@ -6,7 +6,8 @@
       {
         "root": [ "./" ],
         "alias": {
-          "enums": "./imports/enums"
+          "enums": "./imports/enums",
+          "collections": "./imports/collections"
         }
       }
     ]
