@@ -21,6 +21,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-meteor": "^5.0.0",
     "eslint-plugin-react": "^7.11.1",
+    "lodash.uniqueid": "^4.0.1",
     "material-components-web": "^0.38.2",
     "meteor-node-stubs": "^0.4.1",
     "normalize.css": "^8.0.0",

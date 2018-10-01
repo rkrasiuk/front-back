@@ -1,4 +1,5 @@
 import './methods';
+import './publications';
 
 Accounts.config({
   loginExpirationInDays: 1,
