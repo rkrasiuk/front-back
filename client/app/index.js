@@ -40,6 +40,7 @@ class App extends Component {
         return console.error(err); // TODO handle error;
       }
       alert('Good Added');
+      this.setState({form: initialForm, error: undefined});
     });
   };
 
