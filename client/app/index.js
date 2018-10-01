@@ -44,8 +44,14 @@ class App extends Component {
     });
   };
 
-  handleRemoveClick = (id) => {
-    console.log(id);
+  handleRemoveClick = (_id) => {
+    Meteor.call('goods.removeGood', {_id}, (err, res) => {
+      if (err) {
+        alert(err);
+        return console.error(err); // TODO handle error;
+      }
+      alert('Good Removed');
+    });
   };
 
   renderGoodRow = ({
