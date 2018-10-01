@@ -17,7 +17,7 @@ const initialForm = {
 
 const invalidFields = form => Object.keys(form).find(field => form[field] === '');
 
-const tableHeaders = ['Vendor Code', 'Name', 'Brand', 'Price'];
+const tableHeaders = ['Vendor Code', 'Name', 'Brand', 'Price', ''];
 
 class App extends Component {
   state = {
@@ -43,6 +43,10 @@ class App extends Component {
     });
   };
 
+  handleRemoveClick = (id) => {
+    console.log(id);
+  };
+
   renderGoodRow = ({
     _id, vendorCode, name, brand, price,
   }) => (
@@ -50,9 +54,9 @@ class App extends Component {
       <td>{vendorCode}</td>
       <td>{name}</td>
       <td>{brand}</td>
-      <td>{price}</td>
+      <td className="price">{`${price} UAH`}</td>
       <td>
-        <button type="button">x</button>
+        <button onClick={() => this.handleRemoveClick(_id)} type="button">x</button>
       </td>
     </tr>
   );
@@ -101,7 +105,7 @@ class App extends Component {
                 {tableHeaders.map(header => <th key={uniqueid(header)}>{header}</th>)}
               </tr>
             </thead>
-            <tbody>
+            <tbody className="tbody">
               {goods.map(this.renderGoodRow)}
             </tbody>
           </table>
