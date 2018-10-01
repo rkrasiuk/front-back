@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import Input from 'components/Input';
+
 import './index.scss';
 
 // TODO use framework form
@@ -23,18 +25,19 @@ class Login extends Component {
     return (
       <div className="login">
         <form className="login-form" onSubmit={this.login}>
-          <input
-            type="text"
-            placeholder="Login"
-            value={login}
-            onChange={({target: {value}}) => this.setState({login: value})}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={({target: {value}}) => this.setState({password: value})}
-          />
+          <div className="login-inputs">
+            <Input
+              placeholder="Login"
+              value={login}
+              onChange={value => this.setState({login: value})}
+            />
+            <Input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={value => this.setState({password: value})}
+            />
+          </div>
           <button className="login-button" type="submit">Login</button>
         </form>
       </div>

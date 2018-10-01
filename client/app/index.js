@@ -12,6 +12,8 @@ const initialForm = {
   price: '',
 };
 
+const invalidFields = form => Object.keys(form).find(field => form[field] === '');
+
 class App extends Component {
   state = {
     form: initialForm,
@@ -23,6 +25,9 @@ class App extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const {form} = this.state;
+    if (invalidFields(form)) {
+      console.log('lol');
+    }
     Meteor.call('goods.addGood', {...form}, (err, res) => {
       if (err) {
         alert(err);
@@ -40,26 +45,31 @@ class App extends Component {
     return (
       <div className="app">
         <form className="add-goods-form" onSubmit={this.handleSubmit}>
-          <Input
-            placeholder="Vendor Code"
-            value={vendorCode}
-            onChange={value => this.updateFormField('vendorCode', value)}
-          />
-          <Input
-            placeholder="Name"
-            value={name}
-            onChange={value => this.updateFormField('name', value)}
-          />
-          <Input
-            placeholder="Brand"
-            value={brand}
-            onChange={value => this.updateFormField('brand', value)}
-          />
-          <Input
-            placeholder="Price"
-            value={price}
-            onChange={value => this.updateFormField('price', value)}
-          />
+          <div className="goods-form-inputs">
+            <Input
+              type="number"
+              placeholder="Vendor Code"
+              value={vendorCode}
+              onChange={value => this.updateFormField('vendorCode', value)}
+            />
+            <Input
+              placeholder="Name"
+              value={name}
+              onChange={value => this.updateFormField('name', value)}
+            />
+            <Input
+              placeholder="Brand"
+              value={brand}
+              onChange={value => this.updateFormField('brand', value)}
+            />
+            <Input
+              type="number"
+              placeholder="Price"
+              value={price}
+              onChange={value => this.updateFormField('price', value)}
+            />
+          </div>
+          {error && <p className="error">{error}</p>}
           <Button type="submit">Add Good</Button>
         </form>
       </div>
