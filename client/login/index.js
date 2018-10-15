@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom';
 
 import Input from 'components/Input';
 
@@ -17,7 +18,12 @@ class Login extends Component {
   login = (e) => {
     e.preventDefault();
     const {login, password} = this.state;
-    Meteor.loginWithPassword(login, password);
+    Meteor.loginWithPassword(login, password, (err) => {
+      if (err) {
+        return alert(err);
+      }
+      return window.location.replace('/');
+    });
   };
 
   render() {
