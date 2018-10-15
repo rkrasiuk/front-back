@@ -98,8 +98,32 @@ class App extends Component {
     </tr>
   );
 
+  renderForm = () => (
+    <form className="add-goods-form" onSubmit={this.handleSubmit}>
+      <div className="goods-form-inputs">
+        {
+          Object.keys(this.state.form).map((inputName) => {
+            const inputInfo = data.formInfo[this.state.table].fields.find(({name}) => name === inputName);
+
+            return (
+              <Input
+                key={inputName}
+                type={inputInfo.isNum ? 'number' : 'text'}
+                placeholder={inputInfo.placeholder}
+                value={this.state.form[inputName]}
+                onChange={value => this.updateFormField(inputName, value)}
+              />
+            );
+          })
+        }
+      </div>
+      {this.state.error && <p className="error">{this.state.error}</p>}
+      <Button type="submit">Add Good</Button>
+    </form>
+  );
+
   render() {
-    const {error, form, table} = this.state;
+    const {table} = this.state;
     const items = this.props.tables[table];
 
     return (
@@ -115,27 +139,7 @@ class App extends Component {
             </p>
           ))}
         </div>
-        <form className="add-goods-form" onSubmit={this.handleSubmit}>
-          <div className="goods-form-inputs">
-            {
-              Object.keys(form).map((inputName) => {
-                const inputInfo = data.formInfo[table].fields.find(({name}) => name === inputName);
-
-                return (
-                  <Input
-                    key={inputName}
-                    type={inputInfo.isNum ? 'number' : 'text'}
-                    placeholder={inputInfo.placeholder}
-                    value={form[inputName]}
-                    onChange={value => this.updateFormField(inputName, value)}
-                  />
-                );
-              })
-            }
-          </div>
-          {error && <p className="error">{error}</p>}
-          <Button type="submit">Add Good</Button>
-        </form>
+        {table !== 'parsedgoods' && this.renderForm()}
         <div className="goods-data">
           <table>
             <thead>

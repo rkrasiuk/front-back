@@ -18,12 +18,14 @@ export default {
       'ID',
       'Name',
       'Parsing Rules (optional)',
+      '',
     ],
     competitorgoods: [
       'ID',
       'Good ID',
       'Competitor ID',
       'URL',
+      '',
     ],
     parsedgoods: [
       'ID',
@@ -31,6 +33,7 @@ export default {
       'Good ID',
       'Competitor ID',
       'Price',
+      '',
     ],
   },
   formInfo: {
