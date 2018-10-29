@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
 import uniqueid from 'lodash.uniqueid';
 import classnames from 'classnames';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 import CompetitorGoods from 'collections/competitorgoods';
 import ParsedGoods from 'collections/parsedgoods';
@@ -122,6 +124,36 @@ class App extends Component {
     </form>
   );
 
+  renderFormWithDropdown = () => (
+    <form className="add-goods-form" onSubmit={this.handleSubmit}>
+      <div className="goods-form-inputs">
+        <Dropdown
+          className="dropdown"
+          options={this.props.tables.goods.map(({_id}) => _id)}
+          onChange={({value}) => this.updateFormField('goodId', value)}
+          value={this.state.form.goodId}
+          placeholder="Good ID"
+        />
+        <Dropdown
+          className="dropdown"
+          options={this.props.tables.competitors.map(({_id}) => _id)}
+          onChange={({value}) => this.updateFormField('competitorId', value)}
+          value={this.state.form.competitorId}
+          placeholder="Competitor ID"
+        />
+
+        <Input
+          type="text"
+          placeholder="URL"
+          value={this.state.form.url}
+          onChange={value => this.updateFormField('url', value)}
+        />
+      </div>
+      {this.state.error && <p className="error">{this.state.error}</p>}
+      <Button type="submit">Add Good</Button>
+    </form>
+  );
+
   render() {
     const {table} = this.state;
     const items = this.props.tables[table];
@@ -139,7 +171,7 @@ class App extends Component {
             </p>
           ))}
         </div>
-        {table !== 'parsedgoods' && this.renderForm()}
+        {table !== 'parsedgoods' && (table === 'competitorgoods' ? this.renderFormWithDropdown() : this.renderForm())}
         <div className="goods-data">
           <table>
             <thead>

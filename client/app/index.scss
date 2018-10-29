@@ -34,6 +34,10 @@
     flex-direction: column;
     justify-content: space-between;
 
+    .dropdown {
+      margin: 3vh 0;
+    }
+
     .error {
       color: #e10050;
       text-align: center;
@@ -105,6 +109,7 @@
           td {
             flex: 2;
             padding: 3vh 0;
+            overflow: auto;
           }
         }
       }
