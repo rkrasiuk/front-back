@@ -69,7 +69,16 @@ Meteor.methods({
     // 'https://www.mobilluck.com.ua/katalog/naboru_kastrul/peterhof/peterhof-PH-15136-91958.html'
     const response = await axios.get(url);
     const root = parse(response.data);
-    const htmlPrice = root.querySelector('.price');
+
+    let htmlPrice;
+    if (url.match(/.*((mobilluck)|(nobu)).*/gm)) {
+      htmlPrice = root.querySelector('.price');
+    } else if (url.match(/.*a-techno.*/gm)) {
+      htmlPrice = root.querySelector('#price');
+    } else if (url.match(/.*officeman.*/gm)) {
+      htmlPrice = root.querySelector('.main');
+    }
+
     const price = htmlPrice && htmlPrice.firstChild.text && parseInt(htmlPrice.firstChild.text.split(' ').join(''));
     console.log(price);
 
