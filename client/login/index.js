@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
 
 import Input from 'components/Input';
 
@@ -7,13 +6,10 @@ import './index.scss';
 
 // TODO use framework form
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      login: '',
-      password: '',
-    };
-  }
+  state = {
+    login: '',
+    password: '',
+  };
 
   login = (e) => {
     e.preventDefault();
