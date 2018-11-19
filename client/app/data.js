@@ -40,6 +40,10 @@ export default {
     goods: {
       fields: [
         {
+          name: 'id',
+          placeholder: 'Good ID',
+        },
+        {
           name: 'vendorCode',
           placeholder: 'Vendor Code',
           isNum: true,

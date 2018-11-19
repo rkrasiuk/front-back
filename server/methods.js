@@ -12,19 +12,20 @@ import ParsedGoods from 'collections/parsedgoods';
 
 Meteor.methods({
   'goods.addGood': ({
-    vendorCode, name, brand, price,
+    id, vendorCode, name, brand, price,
   }) => {
     new SimpleSchema({
+      id: {type: String},
       vendorCode: {type: Number},
       name: {type: String},
       brand: {type: String},
       price: {type: Number},
     }).validate({
-      vendorCode, name, brand, price,
+      id, vendorCode, name, brand, price,
     });
 
     return Goods.insert({
-      vendorCode, name, brand, price,
+      _id: id, vendorCode, name, brand, price,
     });
   },
 
