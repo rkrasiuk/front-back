@@ -8,10 +8,7 @@ import Button from 'components/Button';
 class Competitor extends Component {
   render() {
     const currCompetitorId = this.props.match.params.id;
-    console.log(currCompetitorId)
-    console.log(this.props.competitorgoods)
     const goods = this.props.competitorgoods.filter(({competitorId}) => competitorId === currCompetitorId);
-    console.log(goods, goods.length)
 
     if (!goods.length) {
       return (
