@@ -81,10 +81,12 @@ class App extends Component {
     });
   };
 
-  renderRow = ({
-    _id, price, ...rest
-  }) => (
-    <tr key={_id}>
+  handleCompetitorClick = (_id) => {
+    this.props.history.push(`/competitor/${_id}`);
+  }
+
+  renderRow = ({_id, price, ...rest}) => (
+    <tr key={_id} className={(this.state.table === 'competitors' && 'competitor-row') || ''} onClick={() => this.state.table === 'competitors' && this.handleCompetitorClick(_id)}>
       <td>{_id}</td>
       {
         Object.values({...rest}).map(val => (

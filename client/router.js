@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import App from './app';
 import Login from './login';
+import Competitor from './app/Competitor';
 
 class AppRouter extends Component {
   constructor(props) {
@@ -18,7 +19,10 @@ class AppRouter extends Component {
 
   renderPrivateRoutes() {
     return (
-      <Route path="/" component={App} />
+      <Switch>
+        <Route path="/competitor/:id" component={Competitor} />
+        <Route path="/" component={App} />
+      </Switch>
     );
   }
 
