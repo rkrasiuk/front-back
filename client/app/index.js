@@ -97,7 +97,7 @@ class App extends Component {
       }
       {price && <td>{price} UAH</td>}
       <td>
-        <button onClick={() => this.handleRemoveClick(_id)} type="button">x</button>
+        <button onClick={() => this.handleRemoveClick(_id)} style={{backgroundColor: 'transparent'}} type="button">x</button>
       </td>
     </tr>
   );
