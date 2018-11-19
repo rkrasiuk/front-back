@@ -13,17 +13,8 @@ import Button from 'components/Button';
 import Input from 'components/Input';
 
 import data from './data';
+import {generatePDF, invalidFields, constructInitialForm} from './utils';
 import './index.scss';
-
-const constructInitialForm = (tableName) => {
-  const form = {};
-  data.formInfo[tableName].fields.forEach(({name, isNum}) => {
-    form[name] = isNum ? undefined : '';
-  });
-  return form;
-};
-
-const invalidFields = form => Object.keys(form).find(field => form[field] === '');
 
 class App extends Component {
   state = {
@@ -80,6 +71,8 @@ class App extends Component {
       alert('Item Removed');
     });
   };
+
+  handleGeneratePDF = () => generatePDF(this.props.tables);
 
   handleCompetitorClick = (_id) => {
     this.props.history.push(`/competitor/${_id}`);
@@ -173,7 +166,10 @@ class App extends Component {
             </p>
           ))}
         </div>
-        {table !== 'parsedgoods' && (table === 'competitorgoods' ? this.renderFormWithDropdown() : this.renderForm())}
+        {table !== 'parsedgoods' ?
+          (table === 'competitorgoods' ? this.renderFormWithDropdown() : this.renderForm())
+          : <Button style={{width: '20%'}} onClick={this.handleGeneratePDF}>Generate PDF</Button>
+        }
         <div className="goods-data">
           <table>
             <thead>
