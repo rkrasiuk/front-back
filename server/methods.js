@@ -93,6 +93,11 @@ Meteor.methods({
       _id: {type: SimpleSchema.RegEx.Id},
     }).validate({_id});
 
+    const competitorsWithGoodId = CompetitorGoods.find({_id}).fetch() || [];
+    const goodId = competitorsWithGoodId[0] && competitorsWithGoodId[0].goodId;
+    if (goodId) {
+      ParsedGoods.remove({goodId});
+    }
     return CompetitorGoods.remove({_id});
   },
 

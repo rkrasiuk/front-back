@@ -88,7 +88,7 @@ class App extends Component {
       <td>{_id}</td>
       {
         Object.values({...rest}).map(val => (
-          <td key={val}>
+          <td key={uniqueid(val)}>
             {val}
           </td>
         ))
