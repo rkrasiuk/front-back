@@ -18,7 +18,7 @@ class Table extends Component {
   renderRow = ({
     goodId, vendorCode, name, brand, price,
   }) => (
-    <div className="row">
+    <div className="row" key={uniqueid(goodId)}>
       <div className="cell" data-title="Good ID">
         {goodId}
       </div>

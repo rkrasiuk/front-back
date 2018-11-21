@@ -10,7 +10,6 @@ class NavigationBar extends Component {
   render() {
     return (
       <div className="navigation">
-        <h3 className="navigation-title">Dream Team</h3>
         <nav className="links">
           <NavLink {...NavigationBar.navLinkProps} to="/goods">Goods</NavLink>
           <NavLink {...NavigationBar.navLinkProps} to="/competitors">Competitors</NavLink>
