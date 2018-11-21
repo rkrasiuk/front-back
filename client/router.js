@@ -3,12 +3,14 @@ import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 
+import Application from './app';
+
 class AppRouter extends Component {
   render() {
     return (
       <Router>
         <Switch>
-          <Route path="/" component={() => <div />} />
+          <Route path="/" component={Application} />
         </Switch>
       </Router>
     );
