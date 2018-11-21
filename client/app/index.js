@@ -6,15 +6,17 @@ import NavigationBar from './components/Navigation';
 
 import './index.scss';
 
-class Application extends Component {
+class GoodsPage extends Component {
   render() {
     return (
       <div className="app">
         <NavigationBar />
-        <Table />
+        <div className="goods-table">
+          <Table />
+        </div>
       </div>
     );
   }
 }
 
-export default Application;
+export default GoodsPage;
