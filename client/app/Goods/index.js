@@ -8,19 +8,24 @@ import Modal from 'components/Modal';
 
 import Header from '../components/Header';
 import NavigationBar from '../components/Navigation';
+import GoodForm from './GoodForm';
 
 import './index.scss';
 
 class GoodsPage extends Component {
   state = {
-    addGoodModal: true,
+    addGoodModal: false,
   };
 
   handleAddClick = () => this.setState({addGoodModal: true});
 
   handleClose = () => this.setState({addGoodModal: false});
 
-  renderModal = () => <Modal open={this.state.addGoodModal} handleClose={this.handleClose} />;
+  renderModal = () => (
+    <Modal open={this.state.addGoodModal} handleClose={this.handleClose}>
+      <GoodForm />
+    </Modal>
+  );
 
   render() {
     return (

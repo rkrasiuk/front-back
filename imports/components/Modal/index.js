@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import MaterialModal from '@material-ui/core/Modal';
-import Input from '@material-ui/core/Input';
 
 import './index.scss';
 
 class Modal extends Component {
   render() {
-    const {open, handleClose} = this.props;
+    const {open, handleClose, children} = this.props;
 
     return (
       <MaterialModal
@@ -17,10 +16,7 @@ class Modal extends Component {
         onClose={handleClose}
       >
         <div className="modal">
-          <h3>Add Good</h3>
-          <form>
-            <Input name="lol" value="lol" />
-          </form>
+          {children}
         </div>
       </MaterialModal>
     );
