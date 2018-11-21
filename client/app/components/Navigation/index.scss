@@ -1,0 +1,25 @@
+.navigation {
+    width: 30%;
+    padding: 0 3%;
+
+    .navigation-title {
+        font-size: 2.8rem;
+        color: #7B8893;
+    }
+    
+    .links {
+        display: flex;
+        flex-direction: column;
+
+        .nav-link {
+            text-decoration: none;
+            color: #7B8893;
+            font-size: 2rem;
+            padding: 3% 0;
+
+            &:hover {
+                color: #7396FD;
+            }
+        }
+    }
+}
