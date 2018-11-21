@@ -24,7 +24,7 @@ class NavigationBar extends Component {
             {' Competitors'}
           </NavLink>
           <NavLink {...NavigationBar.navLinkProps} to="/report">
-            <Report active={activeLink === '/competitors'} />
+            <Report active={activeLink === '/report'} />
             {' Report'}
           </NavLink>
         </nav>
