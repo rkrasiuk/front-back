@@ -12,6 +12,7 @@ class GoodsPage extends Component {
       <div className="app">
         <NavigationBar />
         <div className="goods-table">
+          <button>lol</button>
           <Table />
         </div>
       </div>
