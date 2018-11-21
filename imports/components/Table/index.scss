@@ -1,27 +1,35 @@
 .limiter {
   width: 70%;
+  height: 100vh;
   margin: 0 auto;
 }
 
 .container-table100 {
   width: 100%;
   min-height: 100vh;
+  max-height: 100vh;
 
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   padding: 33px 30px;
 }
 
 .wrap-table100 {
-  width: 90%;
+  margin: 10% 0;
+  width: 100%;
   border-radius: 10px;
   overflow: hidden;
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar { 
+  display: none; 
 }
 
 .table {
@@ -127,7 +135,7 @@
   width: 100% !important;
 }
 
-.row:hover {
+.row:hover:not(.header) {
   background-color: #ececff;
   cursor: pointer;
 }
