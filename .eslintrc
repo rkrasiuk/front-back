@@ -54,6 +54,7 @@
     "react/jsx-filename-extension": "off",
     "react/prefer-stateless-function": "off",
     "react/jsx-closing-bracket-location": "warn",
+    "react/destructuring-assignment": "warn",
     "react/jsx-no-bind": [
       "warn",
       {"allowArrowFunctions": true}
