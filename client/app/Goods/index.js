@@ -6,21 +6,21 @@ import Icon from '@material-ui/core/Icon';
 import Table from 'components/Table';
 import Modal from 'components/Modal';
 
-import Header from './components/Header';
-import NavigationBar from './components/Navigation';
+import Header from '../components/Header';
+import NavigationBar from '../components/Navigation';
 
 import './index.scss';
 
 class GoodsPage extends Component {
   state = {
-    open: false,
+    addGoodModal: true,
   };
 
-  handleAddClick = () => this.setState({open: true});
+  handleAddClick = () => this.setState({addGoodModal: true});
 
-  handleClose = () => null;
+  handleClose = () => this.setState({addGoodModal: false});
 
-  renderModal = () => <Modal open={this.state.open} handleClose={this.handleClose} />;
+  renderModal = () => <Modal open={this.state.addGoodModal} handleClose={this.handleClose} />;
 
   render() {
     return (

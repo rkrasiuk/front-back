@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router, Route, Switch, Redirect,
 } from 'react-router-dom';
 
-import GoodsPage from './app';
+import GoodsPage from './app/Goods';
 
 class AppRouter extends Component {
   render() {

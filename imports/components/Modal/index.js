@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import MaterialModal from '@material-ui/core/Modal';
-import Typography from '@material-ui/core/Typography';
+import Input from '@material-ui/core/Input';
+
+import './index.scss';
 
 class Modal extends Component {
   render() {
@@ -14,13 +16,11 @@ class Modal extends Component {
         open={open}
         onClose={handleClose}
       >
-        <div className="modal" style={{outline: 'none'}}>
-          <Typography variant="h6" id="modal-title">
-            Text in a modal
-          </Typography>
-          <Typography variant="subtitle1" id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+        <div className="modal">
+          <h3>Add Good</h3>
+          <form>
+            <Input name="lol" value="lol" />
+          </form>
         </div>
       </MaterialModal>
     );
