@@ -1,0 +1,125 @@
+.app {
+  padding-top: 10vh;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+
+  .menu {
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100vw;
+    padding: 3vh 10vw 1.5vh 10vw;
+    justify-content: space-between;
+    background-color: #2B313F;
+    font-size: 1.2em;
+
+    .menu-item {
+      color: #7E8594;
+      cursor: pointer;
+    }
+
+    .active {
+      color: white;
+    }
+  }
+
+  .add-goods-form {
+    width: 35vw;
+    height: 55%;
+    padding: 2vh 2vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .dropdown {
+      margin: 3vh 0;
+    }
+
+    .error {
+      color: #e10050;
+      text-align: center;
+    }
+  }
+
+  .goods-data {
+    display: flex;
+    flex-direction: column;
+    margin: 2vh 2vw;
+    width: 65vw;
+
+    .price {
+      text-align: right;
+      width: 15vw;
+      padding-right: 5vw;
+    }
+
+    button {
+      outline: none;
+      border: none;
+      border-radius: 12px;
+      padding: 1vh;
+      cursor: pointer;
+      background-color: #E6EAF3;
+      color: rgba(1, 1, 1, 0.6);
+
+      &:hover {
+        color: black;
+      }
+    }
+
+    table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+
+      thead {
+        display: block;
+        width: 100%;
+        height: 100px;
+
+        tr {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          th {
+            text-align: left;
+            flex: 1;
+            padding: 6vh 0 4vh 0;
+            font-size: 1.2em;
+            font-weight: 500;
+          }
+        }
+      }
+
+      tbody {
+        display:block;
+        width: 100%;
+        overflow: auto;
+        height: 70vh;
+
+        tr {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          td {
+            flex: 2;
+            padding: 3vh 0;
+            overflow: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.competitor-row {
+  &:hover {
+    background-color: rgba(1,1,1,0.03);
+    cursor: pointer;
+  }
+}

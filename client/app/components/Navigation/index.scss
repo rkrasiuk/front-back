@@ -1,5 +1,6 @@
 .navigation {
     width: 30%;
+    height: 100%;
     padding: 0 3%;
 
     .navigation-title {
@@ -10,12 +11,13 @@
     .links {
         display: flex;
         flex-direction: column;
+        margin: 10% 0;
 
         .nav-link {
             text-decoration: none;
             color: #7B8893;
             font-size: 2rem;
-            padding: 3% 0;
+            margin: 3% 0;
 
             &:hover {
                 color: #7396FD;
