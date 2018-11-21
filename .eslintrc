@@ -37,6 +37,7 @@
         ]
       }
     ],
+    "no-confusing-arrow": "warn",
     "object-curly-spacing": [
       "error",
       "never"

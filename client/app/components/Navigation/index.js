@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 
-import {Box} from 'icons';
+import {Box, Competition, Report} from 'icons';
 
 class NavigationBar extends Component {
   static navLinkProps = {
@@ -10,13 +10,23 @@ class NavigationBar extends Component {
   };
 
   render() {
+    const {activeLink} = this.props;
+
     return (
       <div className="navigation">
         <nav className="links">
-          <Box />
-          <NavLink {...NavigationBar.navLinkProps} to="/goods">Goods</NavLink>
-          <NavLink {...NavigationBar.navLinkProps} to="/competitors">Competitors</NavLink>
-          <NavLink {...NavigationBar.navLinkProps} to="/report">Report</NavLink>
+          <NavLink {...NavigationBar.navLinkProps} to="/goods">
+            <Box active={activeLink === '/goods'} />
+            {' Goods'}
+          </NavLink>
+          <NavLink {...NavigationBar.navLinkProps} to="/competitors">
+            <Competition active={activeLink === '/competitors'} />
+            {' Competitors'}
+          </NavLink>
+          <NavLink {...NavigationBar.navLinkProps} to="/report">
+            <Report active={activeLink === '/competitors'} />
+            {' Report'}
+          </NavLink>
         </nav>
       </div>
     );

@@ -39,7 +39,7 @@ class GoodsPage extends Component {
       <div className="app">
         <Header />
         <div className="content">
-          <NavigationBar />
+          <NavigationBar activeLink={this.props.match.url} />
           <div className="goods-table">
             <Table />
           </div>
