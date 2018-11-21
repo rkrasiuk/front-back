@@ -1,5 +1,7 @@
-import './methods';
-import './publications';
+import {Goods, Competitors} from 'collections';
+
+Meteor.publish('goods.list', () => Goods.find({}));
+Meteor.publish('competitors.list', () => Competitors.find({}));
 
 Accounts.config({
   loginExpirationInDays: 1,
