@@ -24,7 +24,7 @@ class GoodsPage extends Component {
 
   renderModal = () => (
     <Modal open={this.state.addGoodModal} handleClose={this.handleClose}>
-      <GoodForm />
+      <GoodForm handleClose={this.handleClose} />
       <Logistics />
     </Modal>
   );

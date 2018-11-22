@@ -13,12 +13,11 @@ class Box extends PureComponent {
 
   render() {
     const {active} = this.props;
-    const color = active && '#7887E8';
 
     return (
       <svg version="1.1" id="box-svg" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 50 50" enableBackground="new 0 0 50 50">
-        <rect x="2" y="4" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" width="46" height="10" />
-        <path fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" d="M4,14v33h42V14H4z   M32.502,25H17.498c-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5h15.004c1.381,0,2.5,1.119,2.5,2.5S33.883,25,32.502,25z" />
+        <rect x="2" y="4" fill="none" stroke={active ? '#7887E8' : undefined} strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" width="46" height="10" />
+        <path fill="none" stroke={active ? '#7887E8' : undefined} strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" d="M4,14v33h42V14H4z   M32.502,25H17.498c-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5h15.004c1.381,0,2.5,1.119,2.5,2.5S33.883,25,32.502,25z" />
       </svg>
     );
   }
@@ -35,12 +34,11 @@ class Competition extends PureComponent {
 
   render() {
     const {active} = this.props;
-    const color = active && '#7887E8';
 
     return (
       <svg version="1.1" id="competition-svg" width="25px" height="25px" x="0px" y="0px" viewBox="0 0 414.295 414.295" enableBackground="new 0 0 414.295 414.295">
         <path
-          fill={color}
+          fill={active ? '#7887E8' : undefined}
           d="M342.804,129.011l69.12-69.12c3.139-3.109,3.164-8.174,0.055-11.314c-1.437-1.451-3.374-2.298-5.415-2.366l0.24,0.48
           l-37.6-1.28l-1.28-37.6c-0.149-4.416-3.849-7.875-8.265-7.726c-2.041,0.069-3.979,0.915-5.415,2.366l-69.04,68.72
           c-1.558,1.568-2.398,3.711-2.32,5.92v8C200.799,28.544,88.417,49.247,31.87,131.331S-3.975,325.798,78.11,382.345
@@ -73,10 +71,9 @@ class Report extends PureComponent {
 
   render() {
     const {active} = this.props;
-    const color = active && '#7887E8';
 
     return (
-      <svg version="1.1" id="report-svg" fill={color} width="25px" height="25px" x="0px" y="0px" viewBox="0 0 60 60" enableBackground="new 0 0 60 60">
+      <svg version="1.1" id="report-svg" fill={active ? '#7887E8' : undefined} width="25px" height="25px" x="0px" y="0px" viewBox="0 0 60 60" enableBackground="new 0 0 60 60">
         <path d="M31,16H17v14h14V16z M29,28H19V18h10V28z" />
         <path d="M52,16H36c-0.553,0-1,0.447-1,1s0.447,1,1,1h16c0.553,0,1-0.447,1-1S52.553,16,52,16z" />
         <path d="M52,22H36c-0.553,0-1,0.447-1,1s0.447,1,1,1h16c0.553,0,1-0.447,1-1S52.553,22,52,22z" />

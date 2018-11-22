@@ -3,17 +3,24 @@ import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import PropTypes from 'prop-types';
 
 import './index.scss';
 
+const initialForm = {
+  goodId: '',
+  vendorCode: '',
+  name: '',
+  brand: '',
+  price: '',
+};
+
 class GoodForm extends Component {
-  state = {
-    goodId: '',
-    vendorCode: '',
-    name: '',
-    brand: '',
-    price: '',
+  static propTypes = {
+    handleClose: PropTypes.func,
   };
+
+  state = initialForm;
 
   handleChange = name => ({target: {value}}) => this.setState({[name]: value});
 
@@ -22,7 +29,16 @@ class GoodForm extends Component {
     const form = this.state;
 
     console.log(form);
-    // Meteor.call();
+    Meteor.call('goods.addGood', form, (err, res) => {
+      if (err) {
+        alert(err);
+        return console.error(err);
+      }
+      alert('Item Added');
+      console.log(res);
+      this.setState(initialForm);
+      return this.props.handleClose();
+    });
   };
 
   render() {

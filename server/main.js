@@ -1,4 +1,7 @@
-import {Goods, Competitors} from 'collections';
+import Goods from 'collections/goods';
+import Competitors from 'collections/competitors';
+
+import './methods';
 
 Meteor.publish('goods.list', () => Goods.find({}));
 Meteor.publish('competitors.list', () => Competitors.find({}));
@@ -8,6 +11,7 @@ Accounts.config({
 });
 
 Meteor.startup(async () => {
+  console.log(Goods.find({}).fetch())
   const admin = Accounts.findUserByUsername('admin');
   const {ADMIN_PASSWORD = 'admin'} = process.env;
 

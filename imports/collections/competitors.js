@@ -1,16 +1,6 @@
 import SimpleSchema from 'simpl-schema';
 
 const Competitors = new Mongo.Collection('competitors');
-const Goods = new Mongo.Collection('goods');
-
-const goodSchema = new SimpleSchema({
-  goodId: String,
-  vendorCode: Number,
-  name: String,
-  brand: String,
-  price: Number,
-});
-Goods.attachSchema(goodSchema);
 
 const competitorSchema = new SimpleSchema({
   name: String,
@@ -25,4 +15,4 @@ const competitorSchema = new SimpleSchema({
 });
 Competitors.attachSchema(competitorSchema);
 
-export default {Competitors, Goods};
+export default Competitors;
