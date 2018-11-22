@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import uniqueid from 'lodash.uniqueid';
+import {withTracker} from 'meteor/react-meteor-data';
 
 import Table from 'components/Table';
 
@@ -45,4 +46,7 @@ class GoodsTable extends Component {
   }
 }
 
-export default GoodsTable;
+export default withTracker(() => ({
+  ready: Meteor.subscribe('goods.list').ready(),
+  goods: Goods.find().fetch(),
+}))(GoodsTable);
