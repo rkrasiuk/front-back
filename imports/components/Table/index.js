@@ -18,14 +18,7 @@ class Table extends Component {
   renderHeader = header => <div className="cell" key={uniqueid(header)}>{header}</div>;
 
   render() {
-    const {headers, rowRenderer} = this.props;
-    const sampleObject = {
-      goodId: 'GAmJ5e7d342RNcwTS',
-      vendorCode: 1020307,
-      name: 'Брошюровщик Agent B-15 H yellow',
-      brand: 'Agent',
-      price: 1638,
-    };
+    const {headers, rowRenderer, sample} = this.props;
 
     return (
       <div className="container-table100">
@@ -36,7 +29,7 @@ class Table extends Component {
               {headers.map(this.renderHeader)}
             </div>
 
-            {Array.from(Array(20).keys()).map(() => rowRenderer(sampleObject))}
+            {Array.from(Array(20).keys()).map(() => rowRenderer(sample))}
           </div>
         </div>
       </div>

@@ -27,10 +27,19 @@ class GoodsTable extends Component {
   );
 
   render() {
+    const sampleObject = {
+      goodId: 'GAmJ5e7d342RNcwTS',
+      vendorCode: 1020307,
+      name: 'Брошюровщик Agent B-15 H yellow',
+      brand: 'Agent',
+      price: 1638,
+    };
+
     return (
       <Table
         headers={['Good ID', 'Vendor Code', 'Name', 'Brand', 'Price']}
         rowRenderer={this.renderRow}
+        sample={sampleObject}
       />
     );
   }

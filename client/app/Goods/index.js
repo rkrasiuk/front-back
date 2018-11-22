@@ -20,11 +20,11 @@ class GoodsPage extends Component {
 
   handleAddClick = () => this.setState({addGoodModal: true});
 
-  handleClose = () => this.setState({addGoodModal: false});
+  handleAddGoodClose = () => this.setState({addGoodModal: false});
 
-  renderModal = () => (
-    <Modal open={this.state.addGoodModal} handleClose={this.handleClose}>
-      <GoodForm handleClose={this.handleClose} />
+  renderAddGoodModal = () => (
+    <Modal open={this.state.addGoodModal} handleClose={this.handleAddGoodClose}>
+      <GoodForm handleClose={this.handleAddGoodClose} />
       <Logistics />
     </Modal>
   );
@@ -46,7 +46,7 @@ class GoodsPage extends Component {
             <GoodsTable />
           </div>
         </div>
-        {this.renderModal()}
+        {this.renderAddGoodModal()}
       </div>
     );
   }

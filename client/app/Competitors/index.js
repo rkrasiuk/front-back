@@ -3,14 +3,31 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
 
+import Modal from 'components/Modal';
+import DroneRace from 'illustrations/dronerace';
 
 import Header from '../components/Header';
 import NavigationBar from '../components/Navigation';
 import CompetitorsTable from './CompetitorsTable';
+import CompetitorForm from './CompetitorForm';
 
 import './index.scss';
 
 class CompetitorsPage extends Component {
+  state = {
+    addCompetitorModal: false,
+  };
+
+  handleAddClick = () => this.setState({addCompetitorModal: true});
+  handleAddCompetitorClose = () => this.setState({addCompetitorModal: false});
+
+  renderAddCompetitorModal = () => (
+    <Modal open={this.state.addCompetitorModal} handleClose={this.handleAddCompetitorClose}>
+      <CompetitorForm />
+      <DroneRace />
+    </Modal>
+  );
+
   render() {
     return (
       <div className="app">
@@ -28,6 +45,7 @@ class CompetitorsPage extends Component {
             <CompetitorsTable />
           </div>
         </div>
+        {this.renderAddCompetitorModal()}
       </div>
     );
   }
