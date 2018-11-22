@@ -1,0 +1,44 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+
+    .report-select {
+        width: 10vw;
+        margin: 0 2vw;
+    }
+
+    .content {
+        width: 100vw;
+        display: flex;
+        
+        .report-table {
+            width: 70%;
+            height: 100vh;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+
+            .row .cell:nth-child(1) {
+                width: 150px;
+                padding-left: 40px;
+            }
+            .row .cell:nth-child(2) {
+                width: 100px;
+            }
+            .row .cell:nth-child(3) {
+                width: 100px;
+            }
+            .row .cell:nth-child(4) {
+                width: 100px;
+            }
+            .row .cell:nth-child(5) {
+                width: 100px;
+            }
+            .row .cell:nth-child(6) {
+                width: 100px;
+            }
+        }
+    }
+}

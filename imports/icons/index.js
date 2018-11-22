@@ -36,7 +36,7 @@ class Competition extends PureComponent {
     const {active} = this.props;
 
     return (
-      <svg version="1.1" id="competition-svg" width="25px" height="25px" x="0px" y="0px" viewBox="0 0 414.295 414.295" enableBackground="new 0 0 414.295 414.295">
+      <svg version="1.1" id="competition-svg" width="30px" height="30px" x="0px" y="0px" viewBox="0 0 414.295 414.295" enableBackground="new 0 0 414.295 414.295">
         <path
           fill={active ? '#7887E8' : undefined}
           d="M342.804,129.011l69.12-69.12c3.139-3.109,3.164-8.174,0.055-11.314c-1.437-1.451-3.374-2.298-5.415-2.366l0.24,0.48

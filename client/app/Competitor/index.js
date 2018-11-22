@@ -9,7 +9,7 @@ class Competitor extends Component {
     const competitorId = this.props.match.params.id;
     const competitor = this.props.competitors.find(({_id}) => competitorId === _id);
 
-    console.log(competitor)
+    console.log(competitor);
     if (!competitor) {
       return (
         <div style={{width: '100vw', padding: '2vh 4vw'}}>
