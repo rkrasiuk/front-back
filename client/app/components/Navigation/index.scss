@@ -14,10 +14,12 @@
             font-size: 2rem;
             margin: 3% 0;
             fill: #7B8893;
+            stroke: #7B8893;
 
             &:hover {
                 color: #7396FD;
                 fill: #7396FD !important;
+                stroke: #7396FD !important;
             }
         }
     }

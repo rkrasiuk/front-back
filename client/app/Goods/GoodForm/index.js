@@ -17,7 +17,7 @@ const initialForm = {
 
 class GoodForm extends Component {
   static propTypes = {
-    handleClose: PropTypes.func,
+    handleClose: PropTypes.func.isRequired,
   };
 
   state = initialForm;
@@ -28,7 +28,6 @@ class GoodForm extends Component {
     e.preventDefault();
     const form = this.state;
 
-    console.log(form);
     Meteor.call('goods.addGood', form, (err, res) => {
       if (err) {
         alert(err);
