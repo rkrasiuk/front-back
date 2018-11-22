@@ -6,19 +6,15 @@ import './index.scss';
 
 class Table extends Component {
   static propTypes = {
-    headers: PropTypes.arrayOf(PropTypes.string),
-    rowRenderer: PropTypes.func,
-  };
-
-  static defaultProps = {
-    headers: [],
-    rowRenderer: () => null,
+    headers: PropTypes.arrayOf(PropTypes.string).isRequired,
+    rowRenderer: PropTypes.func.isRequired,
+    data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   };
 
   renderHeader = header => <div className="cell" key={uniqueid(header)}>{header}</div>;
 
   render() {
-    const {headers, rowRenderer, sample} = this.props;
+    const {headers, rowRenderer, data, sample} = this.props;
 
     return (
       <div className="container-table100">
@@ -29,7 +25,7 @@ class Table extends Component {
               {headers.map(this.renderHeader)}
             </div>
 
-            {Array.from(Array(20).keys()).map(() => rowRenderer(sample))}
+            {data.map(rowRenderer)}
           </div>
         </div>
       </div>

@@ -2,27 +2,26 @@ import React, {Component} from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
 import uniqueid from 'lodash.uniqueid';
 
-import CompetitorGoods from 'collections/competitorgoods';
-import Button from 'components/Button';
+import Competitors from 'collections/competitors';
 
 class Competitor extends Component {
   render() {
-    const currCompetitorId = this.props.match.params.id;
-    const goods = this.props.competitorgoods.filter(({competitorId}) => competitorId === currCompetitorId);
+    const competitorId = this.props.match.params.id;
+    const competitor = this.props.competitors.find(({_id}) => competitorId === _id);
 
-    if (!goods.length) {
+    if (!competitor) {
       return (
         <div style={{width: '100vw', padding: '2vh 4vw'}}>
-          <Button onClick={() => this.props.history.push('/')}>{'< Back'}</Button>
           <p>No goods are registered for this competitor</p>
         </div>
       );
     }
 
+    const {goods = []} = competitor;
+
     return (
       <div style={{width: '100vw', padding: '2vh 4vw'}}>
-        <Button onClick={() => this.props.history.push('/')}>{'< Back'}</Button>
-        <h1>Competitor ID - {currCompetitorId}</h1>
+        <h1>Competitor ID</h1>
         {goods.map(({goodId, url}) => (
           <div key={uniqueid()} style={{width: '80%', display: 'flex', justifyContent: 'space-between'}}>
             <p>GoodId: {goodId}</p>
@@ -35,6 +34,6 @@ class Competitor extends Component {
 }
 
 export default withTracker(() => ({
-  ready: Meteor.subscribe('competitorgoods.list').ready(),
-  competitorgoods: CompetitorGoods.find({}).fetch(),
+  ready: Meteor.subscribe('competitors.list').ready(),
+  competitors: Competitors.find({}).fetch(),
 }))(Competitor);

@@ -40,11 +40,11 @@ class CompetitorForm extends Component {
     const {name, parsingRules} = this.state;
 
     return (
-      <form className="good-form" autoComplete="off" onSubmit={this.submit}>
-        <h3 className="good-form-title">Add Competitor</h3>
+      <form className="competitor-form" autoComplete="off" onSubmit={this.submit}>
+        <h3 className="competitor-form-title">Add Competitor</h3>
         <TextField
           label="Name"
-          className="good-form-input"
+          className="competitor-form-input"
           value={name}
           onChange={this.handleChange('name')}
           required
@@ -52,12 +52,12 @@ class CompetitorForm extends Component {
         />
         <TextField
           label="Parsing Rules"
-          className="good-form-input"
+          className="competitor-form-input"
           value={parsingRules}
           onChange={this.handleChange('parsingRules')}
           margin="normal"
         />
-        <Button variant="contained" color="primary" type="submit" className="good-form-button">
+        <Button variant="contained" color="primary" type="submit" className="competitor-form-button">
           Submit
           <CloudUploadIcon className="right-icon" />
         </Button>

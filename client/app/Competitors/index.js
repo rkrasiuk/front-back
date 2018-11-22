@@ -41,7 +41,7 @@ class CompetitorsPage extends Component {
         </Header>
         <div className="content">
           <NavigationBar activeLink={this.props.match.url} />
-          <div className="goods-table">
+          <div className="competitors-table">
             <CompetitorsTable />
           </div>
         </div>

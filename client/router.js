@@ -5,6 +5,7 @@ import {
 
 import Goods from './app/Goods';
 import Competitors from './app/Competitors';
+import Competitor from './app/Competitor';
 
 class AppRouter extends Component {
   render() {
@@ -12,6 +13,7 @@ class AppRouter extends Component {
       <Router>
         <Switch>
           <Route path="/goods" component={Goods} />
+          <Route path="/competitor/:id" component={Competitor} />
           <Route path="/competitors" component={Competitors} />
           <Redirect from="*" to="/goods" />
         </Switch>

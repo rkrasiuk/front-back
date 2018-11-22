@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import uniqueid from 'lodash.uniqueid';
+import {withTracker} from 'meteor/react-meteor-data';
+import {NavLink} from 'react-router-dom';
 
+import Competitors from 'collections/competitors';
 import Table from 'components/Table';
 
 class CompetitorsTable extends Component {
   renderRow = ({
     _id, name, parsingRules,
   }) => (
-    <div className="row" key={uniqueid(_id)}>
+    <NavLink to={`/competitor/${_id}`} style={{textDecoration: 'none'}} className="row" key={uniqueid(_id)}>
       <div className="cell" data-title="Competitor ID">
         {_id}
       </div>
@@ -17,24 +20,23 @@ class CompetitorsTable extends Component {
       <div className="cell" data-title="Parsing Rules">
         {parsingRules || 'None'}
       </div>
-    </div>
+    </NavLink>
   );
 
   render() {
-    const sampleObject = {
-      _id: '8PsjoyNj7ms6gTGaD',
-      name: 'Mobilluck.ua',
-      parsingRules: '',
-    };
+    const {competitors} = this.props;
 
     return (
       <Table
         headers={['Competitor ID', 'Name', 'Parsing Rules']}
         rowRenderer={this.renderRow}
-        sample={sampleObject}
+        data={competitors}
       />
     );
   }
 }
 
-export default CompetitorsTable;
+export default withTracker(() => ({
+  ready: Meteor.subscribe('competitors.list').ready(),
+  competitors: Competitors.find().fetch(),
+}))(CompetitorsTable);

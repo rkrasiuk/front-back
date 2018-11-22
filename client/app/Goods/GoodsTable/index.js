@@ -7,7 +7,7 @@ import Table from 'components/Table';
 
 class GoodsTable extends Component {
   renderRow = ({
-    goodId, vendorCode, name, brand, price,
+    _id: goodId, vendorCode, name, brand, price,
   }) => (
     <div className="row" key={uniqueid(goodId)}>
       <div className="cell" data-title="Good ID">
@@ -29,19 +29,13 @@ class GoodsTable extends Component {
   );
 
   render() {
-    const sampleObject = {
-      goodId: 'GAmJ5e7d342RNcwTS',
-      vendorCode: 1020307,
-      name: 'Брошюровщик Agent B-15 H yellow',
-      brand: 'Agent',
-      price: 1638,
-    };
+    const {goods} = this.props;
 
     return (
       <Table
         headers={['Good ID', 'Vendor Code', 'Name', 'Brand', 'Price']}
         rowRenderer={this.renderRow}
-        sample={sampleObject}
+        data={goods}
       />
     );
   }

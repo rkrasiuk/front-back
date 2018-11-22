@@ -1,21 +1,22 @@
-.good-form {
+.competitor-form {
     display: flex;
     flex-direction: column;
     min-width: 50%;
     height: 100%;
     
-    .good-form-title {
+    .competitor-form-title {
         font-size: 2rem;
         color: #7C8893;
+        margin-bottom: 10%;
     }
 
-    .good-form-input {
+    .competitor-form-input {
         width: 80%;
     }
 
-    .good-form-button {
+    .competitor-form-button {
         width: 30%;
-        margin-top: 4%;
+        margin-top: 25%;
 
         .right-icon {
             margin-left: 12px;
