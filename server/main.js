@@ -11,7 +11,6 @@ Accounts.config({
 });
 
 Meteor.startup(async () => {
-  console.log(Goods.find({}).fetch())
   const admin = Accounts.findUserByUsername('admin');
   const {ADMIN_PASSWORD = 'admin'} = process.env;
 
