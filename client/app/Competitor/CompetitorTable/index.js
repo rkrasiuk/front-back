@@ -3,31 +3,25 @@ import uniqueid from 'lodash.uniqueid';
 
 import Table from 'components/Table';
 
-class ReportTable extends Component {
+class CompetitorTable extends Component {
   renderRow = ({
-    _id: goodId, name, brand, price,
+    goodId, url, parsed, time, price,
   }) => (
     <div className="row" key={uniqueid(goodId)}>
       <div className="cell" data-title="Good ID">
         {goodId}
       </div>
-      <div className="cell" data-title="Name">
-        {name}
+      <div className="cell" data-title="URL">
+        {url}
       </div>
-      <div className="cell" data-title="Brand">
-        {brand}
+      <div className="cell" data-title="Parsed">
+        {parsed}
+      </div>
+      <div className="cell" data-title="Time">
+        {time}
       </div>
       <div className="cell" data-title="Price">
         {`${price} UAH`}
-      </div>
-      <div className="cell" data-title="Time">
-        {'   '}
-      </div>
-      <div className="cell" data-title="Competitor">
-        {'   '}
-      </div>
-      <div className="cell" data-title="Price">
-        {' UAH'}
       </div>
     </div>
   );
@@ -37,7 +31,7 @@ class ReportTable extends Component {
 
     return (
       <Table
-        headers={['Good ID', 'Name', 'Brand', 'Price', 'Time', 'Competitor', 'Price']}
+        headers={['Good ID', 'URL', 'Parsed', 'Time', 'Price']}
         rowRenderer={this.renderRow}
         data={goods}
       />
@@ -45,4 +39,4 @@ class ReportTable extends Component {
   }
 }
 
-export default ReportTable;
+export default CompetitorTable;

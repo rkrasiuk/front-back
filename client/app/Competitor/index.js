@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import Icon from '@material-ui/core/Icon';
 import {withTracker} from 'meteor/react-meteor-data';
 import uniqueid from 'lodash.uniqueid';
 
 import Competitors from 'collections/competitors';
+
+import CompetitorTable from './CompetitorTable';
+import Header from '../components/Header';
 
 class Competitor extends Component {
   render() {
@@ -18,19 +24,26 @@ class Competitor extends Component {
       );
     }
 
-    const {goods = []} = competitor;
+    const {goods = [], name} = competitor;
 
     return (
-      <div style={{width: '100vw', padding: '2vh 4vw'}}>
-        <h1>Competitor ID</h1>
-        {
-          goods.map(({goodId, url}) => (
-            <div key={uniqueid()} style={{width: '80%', display: 'flex', justifyContent: 'space-between'}}>
-              <p>GoodId: {goodId}</p>
-              <p>URL: {url}</p>
-            </div>
-          ))
-        }
+      <div className="app">
+        <Header>
+          <Button onClick={this.handleAddClick} variant="fab" color="primary" aria-label="Add" className="edit-button">
+            <AddIcon />
+          </Button>
+          <Button variant="fab" color="primary" aria-label="Edit" className="edit-button">
+            <Icon>chevron_left</Icon>
+          </Button>
+        </Header>
+        <div className="content">
+          <div className="competitor-info">
+            <h3 className="competitor-name">{name}</h3>
+          </div>
+          <div className="competitor-table">
+            <CompetitorTable goods={goods} />
+          </div>
+        </div>
       </div>
     );
   }

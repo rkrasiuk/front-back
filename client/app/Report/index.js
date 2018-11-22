@@ -6,7 +6,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
+import {withTracker} from 'meteor/react-meteor-data';
 
+import Goods from 'collections/goods';
 import Header from '../components/Header';
 import NavigationBar from '../components/Navigation';
 import ReportTable from './ReportTable';
@@ -25,7 +27,10 @@ class Report extends Component {
   render() {
     const brands = ['Brand 1', 'Brand 2', 'Brand 3'];
     const prices = ['Price 1', 'Price 2', 'Price 3'];
-    const competitors = ['Competitor 1', 'Competitor 2', 'Competitor 3'];
+    const competitors = [
+      'Competitor 1', 'Competitor 2', 'Competitor 3',
+      'Competitor 1', 'Competitor 2', 'Competitor 3',
+    ];
 
     return (
       <div className="app">
@@ -49,7 +54,7 @@ class Report extends Component {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {brands.map(brand => <MenuItem key={`select-${brand}`} value={brand}>{brand}</MenuItem>)}
+              {brands.map(brand => <MenuItem key={uniqueid(brand)} value={brand}>{brand}</MenuItem>)}
             </Select>
           </FormControl>
           <FormControl className="report-select">
@@ -65,7 +70,7 @@ class Report extends Component {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {prices.map(price => <MenuItem key={`select-${price}`} value={price}>{price}</MenuItem>)}
+              {prices.map(price => <MenuItem key={uniqueid(price)} value={price}>{price}</MenuItem>)}
             </Select>
           </FormControl>
           <FormControl className="report-select">
@@ -81,7 +86,9 @@ class Report extends Component {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {competitors.map(competitor => <MenuItem key={`select-${competitor}`} value={competitor}>{competitor}</MenuItem>)}
+              {competitors.map(competitor => (
+                <MenuItem key={uniqueid(competitor)} value={competitor}>{competitor}</MenuItem>
+              ))}
             </Select>
           </FormControl>
           <Button onClick={this.handleAddClick} variant="fab" color="primary" aria-label="Add" className="edit-button">
@@ -94,7 +101,7 @@ class Report extends Component {
         <div className="content">
           <NavigationBar activeLink={this.props.match.url} />
           <div className="report-table">
-            <ReportTable />
+            <ReportTable goods={this.props.goods} />
           </div>
         </div>
       </div>
@@ -102,4 +109,7 @@ class Report extends Component {
   }
 }
 
-export default Report;
+export default withTracker(() => ({
+  ready: Meteor.subscribe('goods.list').ready(),
+  goods: Goods.find().fetch(),
+}))(Report);
