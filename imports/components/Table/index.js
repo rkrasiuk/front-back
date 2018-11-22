@@ -7,39 +7,18 @@ import './index.scss';
 class Table extends Component {
   static propTypes = {
     headers: PropTypes.arrayOf(PropTypes.string),
+    rowRenderer: PropTypes.func,
   };
 
   static defaultProps = {
     headers: [],
+    rowRenderer: () => null,
   };
 
   renderHeader = header => <div className="cell" key={uniqueid(header)}>{header}</div>;
 
-  renderRow = ({
-    goodId, vendorCode, name, brand, price,
-  }) => (
-    <div className="row" key={uniqueid(goodId)}>
-      <div className="cell" data-title="Good ID">
-        {goodId}
-      </div>
-      <div className="cell" data-title="Vendor Code">
-        {vendorCode}
-      </div>
-      <div className="cell" data-title="Name">
-        {name}
-      </div>
-      <div className="cell" data-title="Brand">
-        {brand}
-      </div>
-      <div className="cell" data-title="Price">
-        {price} UAH
-      </div>
-    </div>
-  );
-
   render() {
-    // const {headers} = this.props;
-    const headers = ['Good ID', 'Vendor Code', 'Name', 'Brand', 'Price'];
+    const {headers, rowRenderer} = this.props;
     const sampleObject = {
       goodId: 'GAmJ5e7d342RNcwTS',
       vendorCode: 1020307,
@@ -57,7 +36,7 @@ class Table extends Component {
               {headers.map(this.renderHeader)}
             </div>
 
-            {Array.from(Array(20).keys()).map(() => this.renderRow(sampleObject))}
+            {Array.from(Array(20).keys()).map(() => rowRenderer(sampleObject))}
           </div>
         </div>
       </div>

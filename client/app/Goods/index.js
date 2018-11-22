@@ -3,13 +3,13 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
 
-import Table from 'components/Table';
 import Modal from 'components/Modal';
 import Logistics from 'illustrations/logistics';
 
 import Header from '../components/Header';
 import NavigationBar from '../components/Navigation';
 import GoodForm from './GoodForm';
+import GoodsTable from './GoodsTable';
 
 import './index.scss';
 
@@ -43,7 +43,7 @@ class GoodsPage extends Component {
         <div className="content">
           <NavigationBar activeLink={this.props.match.url} />
           <div className="goods-table">
-            <Table />
+            <GoodsTable />
           </div>
         </div>
         {this.renderModal()}

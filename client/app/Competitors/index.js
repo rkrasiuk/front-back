@@ -25,7 +25,9 @@ class CompetitorsPage extends Component {
         <div className="content">
           <NavigationBar activeLink={this.props.match.url} />
           <div className="goods-table">
-            <Table />
+            <Table
+              headers={['Good ID', 'Vendor Code', 'Name', 'Brand', 'Price']}
+            />
           </div>
         </div>
       </div>

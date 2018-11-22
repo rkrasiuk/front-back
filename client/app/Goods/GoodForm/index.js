@@ -34,7 +34,6 @@ class GoodForm extends Component {
         return console.error(err);
       }
       alert('Item Added');
-      console.log(res);
       this.setState(initialForm);
       return this.props.handleClose();
     });
