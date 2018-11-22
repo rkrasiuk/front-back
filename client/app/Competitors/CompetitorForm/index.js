@@ -25,7 +25,7 @@ class CompetitorForm extends Component {
     e.preventDefault();
     const form = this.state;
 
-    Meteor.call('', form, (err, res) => {
+    Meteor.call('competitors.addCompetitor', form, (err, res) => {
       if (err) {
         alert(err);
         return console.error(err);

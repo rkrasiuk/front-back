@@ -23,7 +23,7 @@ class CompetitorsPage extends Component {
 
   renderAddCompetitorModal = () => (
     <Modal open={this.state.addCompetitorModal} handleClose={this.handleAddCompetitorClose}>
-      <CompetitorForm />
+      <CompetitorForm handleClose={this.handleAddCompetitorClose} />
       <DroneRace />
     </Modal>
   );
