@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import ChevronRight from '@material-ui/icons/ChevronRight';
 import PropTypes from 'prop-types';
 

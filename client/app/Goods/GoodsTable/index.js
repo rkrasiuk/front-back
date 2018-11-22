@@ -23,7 +23,7 @@ class GoodsTable extends Component {
         {brand}
       </div>
       <div className="cell" data-title="Price">
-        {price} UAH
+        {`${price} UAH`}
       </div>
     </div>
   );

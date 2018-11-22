@@ -6,6 +6,7 @@ import {
 import Goods from './app/Goods';
 import Competitors from './app/Competitors';
 import Competitor from './app/Competitor';
+import Report from './app/Report';
 
 class AppRouter extends Component {
   render() {
@@ -15,6 +16,7 @@ class AppRouter extends Component {
           <Route path="/goods" component={Goods} />
           <Route path="/competitor/:id" component={Competitor} />
           <Route path="/competitors" component={Competitors} />
+          <Route path="/report" component={Report} />
           <Redirect from="*" to="/goods" />
         </Switch>
       </Router>
