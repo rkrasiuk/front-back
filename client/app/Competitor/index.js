@@ -9,6 +9,7 @@ class Competitor extends Component {
     const competitorId = this.props.match.params.id;
     const competitor = this.props.competitors.find(({_id}) => competitorId === _id);
 
+    console.log(competitor)
     if (!competitor) {
       return (
         <div style={{width: '100vw', padding: '2vh 4vw'}}>
@@ -22,12 +23,14 @@ class Competitor extends Component {
     return (
       <div style={{width: '100vw', padding: '2vh 4vw'}}>
         <h1>Competitor ID</h1>
-        {goods.map(({goodId, url}) => (
-          <div key={uniqueid()} style={{width: '80%', display: 'flex', justifyContent: 'space-between'}}>
-            <p>GoodId: {goodId}</p>
-            <p>URL: {url}</p>
-          </div>
-        ))}
+        {
+          goods.map(({goodId, url}) => (
+            <div key={uniqueid()} style={{width: '80%', display: 'flex', justifyContent: 'space-between'}}>
+              <p>GoodId: {goodId}</p>
+              <p>URL: {url}</p>
+            </div>
+          ))
+        }
       </div>
     );
   }

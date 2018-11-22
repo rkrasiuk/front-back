@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import ChevronRight from '@material-ui/icons/ChevronRight';
 import PropTypes from 'prop-types';
 
 import './index.scss';
@@ -59,7 +59,7 @@ class CompetitorForm extends Component {
         />
         <Button variant="contained" color="primary" type="submit" className="competitor-form-button">
           Submit
-          <CloudUploadIcon className="right-icon" />
+          <ChevronRight className="right-icon" />
         </Button>
       </form>
     );
