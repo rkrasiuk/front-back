@@ -5,6 +5,7 @@ import Icon from '@material-ui/core/Icon';
 
 import Table from 'components/Table';
 import Modal from 'components/Modal';
+import Logistics from 'illustrations/logistics';
 
 import Header from '../components/Header';
 import NavigationBar from '../components/Navigation';
@@ -24,6 +25,7 @@ class GoodsPage extends Component {
   renderModal = () => (
     <Modal open={this.state.addGoodModal} handleClose={this.handleClose}>
       <GoodForm />
+      <Logistics />
     </Modal>
   );
 

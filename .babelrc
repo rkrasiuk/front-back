@@ -6,7 +6,7 @@
       {
         "root": [ "./" ],
         "alias": {
-          "enums": "./imports/enums",
+          "illustrations": "./imports/illustrations",
           "icons": "./imports/icons",
           "collections": "./imports/collections",
           "components": "./imports/components"

@@ -32,7 +32,7 @@ class Table extends Component {
         {brand}
       </div>
       <div className="cell" data-title="Price">
-        {price}
+        {price} UAH
       </div>
     </div>
   );
@@ -41,11 +41,11 @@ class Table extends Component {
     // const {headers} = this.props;
     const headers = ['Good ID', 'Vendor Code', 'Name', 'Brand', 'Price'];
     const sampleObject = {
-      goodId: 'Vincent Williamson',
-      vendorCode: 31,
-      name: 'iOS Developer',
-      brand: 'Washington',
-      price: 1000,
+      goodId: 'GAmJ5e7d342RNcwTS',
+      vendorCode: 1020307,
+      name: 'Брошюровщик Agent B-15 H yellow',
+      brand: 'Agent',
+      price: 1638,
     };
 
     return (

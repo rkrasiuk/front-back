@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Button from '@material-ui/core/Button';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+
+import './index.scss';
 
 class GoodForm extends Component {
   state = {
@@ -10,7 +15,15 @@ class GoodForm extends Component {
     price: '',
   };
 
-  handleChange = name => event => this.setState({[name]: event.target.value});
+  handleChange = name => ({target: {value}}) => this.setState({[name]: value});
+
+  submit = (e) => {
+    e.preventDefault();
+    const form = this.state;
+
+    console.log(form);
+    // Meteor.call();
+  };
 
   render() {
     const {
@@ -18,12 +31,14 @@ class GoodForm extends Component {
     } = this.state;
 
     return (
-      <form className="good-form">
+      <form className="good-form" autoComplete="off" onSubmit={this.submit}>
+        <h3 className="good-form-title">Add Good</h3>
         <TextField
           label="Good ID"
           className="good-form-input"
           value={goodId}
           onChange={this.handleChange('goodId')}
+          required
           margin="normal"
         />
         <TextField
@@ -31,6 +46,8 @@ class GoodForm extends Component {
           className="good-form-input"
           value={vendorCode}
           onChange={this.handleChange('vendorCode')}
+          required
+          type="number"
           margin="normal"
         />
         <TextField
@@ -38,6 +55,7 @@ class GoodForm extends Component {
           className="good-form-input"
           value={name}
           onChange={this.handleChange('name')}
+          required
           margin="normal"
         />
         <TextField
@@ -45,6 +63,7 @@ class GoodForm extends Component {
           className="good-form-input"
           value={brand}
           onChange={this.handleChange('brand')}
+          required
           margin="normal"
         />
         <TextField
@@ -52,8 +71,17 @@ class GoodForm extends Component {
           className="good-form-input"
           value={price}
           onChange={this.handleChange('price')}
+          required
           margin="normal"
+          type="number"
+          InputProps={{
+            startAdornment: <InputAdornment position="start">UAH</InputAdornment>,
+          }}
         />
+        <Button variant="contained" color="primary" type="submit" className="good-form-button">
+          Submit
+          <CloudUploadIcon className="right-icon" />
+        </Button>
       </form>
     );
   }
