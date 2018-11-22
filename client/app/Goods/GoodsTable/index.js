@@ -4,7 +4,7 @@ import uniqueid from 'lodash.uniqueid';
 import Table from 'components/Table';
 
 class GoodsTable extends Component {
-  renderTableRow = ({
+  renderRow = ({
     goodId, vendorCode, name, brand, price,
   }) => (
     <div className="row" key={uniqueid(goodId)}>
@@ -30,7 +30,7 @@ class GoodsTable extends Component {
     return (
       <Table
         headers={['Good ID', 'Vendor Code', 'Name', 'Brand', 'Price']}
-        rowRenderer={this.renderTableRow}
+        rowRenderer={this.renderRow}
       />
     );
   }

@@ -3,10 +3,10 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
 
-import Table from 'components/Table';
 
 import Header from '../components/Header';
 import NavigationBar from '../components/Navigation';
+import CompetitorsTable from './CompetitorsTable';
 
 import './index.scss';
 
@@ -25,9 +25,7 @@ class CompetitorsPage extends Component {
         <div className="content">
           <NavigationBar activeLink={this.props.match.url} />
           <div className="goods-table">
-            <Table
-              headers={['Good ID', 'Vendor Code', 'Name', 'Brand', 'Price']}
-            />
+            <CompetitorsTable />
           </div>
         </div>
       </div>
