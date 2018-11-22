@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import uniqueid from 'lodash.uniqueid';
 import {withTracker} from 'meteor/react-meteor-data';
 
+import Goods from 'collections/goods';
 import Table from 'components/Table';
 
 class GoodsTable extends Component {
