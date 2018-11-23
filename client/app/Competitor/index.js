@@ -7,7 +7,6 @@ import {withTracker} from 'meteor/react-meteor-data';
 
 import Competitors from 'collections/competitors';
 import Modal from 'components/Modal';
-import Logistics from 'illustrations/logistics';
 import VehicleSale from 'illustrations/vehiclesale';
 
 import CompetitorTable from './CompetitorTable';
@@ -25,7 +24,7 @@ class Competitor extends Component {
 
   renderAddCompetitorGoodModal = () => (
     <Modal open={this.state.addCompetitorGoodModal} handleClose={this.handleAddCompetitorGoodClose}>
-      <CompetitorGoodForm competitorId={this.props.match.params.id} />
+      <CompetitorGoodForm handleClose={this.handleAddCompetitorGoodClose} competitorId={this.props.match.params.id} />
       <VehicleSale />
     </Modal>
   );

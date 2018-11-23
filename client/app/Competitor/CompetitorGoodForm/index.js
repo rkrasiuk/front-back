@@ -37,7 +37,7 @@ class CompetitorGoodForm extends Component {
         alert(err);
         return console.error(err);
       }
-      alert('Item Added');
+      // alert('Item Added');
       this.setState(initialForm);
       return this.props.handleClose();
     });

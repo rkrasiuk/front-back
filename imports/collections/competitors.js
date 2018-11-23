@@ -10,8 +10,8 @@ const competitorSchema = new SimpleSchema({
   'goods.$.goodId': String,
   'goods.$.url': String,
   'goods.$.status': String,
-  'goods.$.time': String,
-  'goods.$.price': String,
+  'goods.$.time': {type: String, optional: true},
+  'goods.$.price': {type: String, optional: true},
 });
 Competitors.attachSchema(competitorSchema);
 

@@ -1,16 +1,11 @@
 import axios from 'axios';
 import {parse} from 'node-html-parser';
-import isUrl from 'is-url';
 import moment from 'moment';
 
 import Competitors from 'collections/competitors';
 import Goods from 'collections/goods';
 
 const parseGood = async (competitorId, goodId, url, {parsingRules, goods}) => {
-  if (!isUrl(url)) {
-    throw new Meteor.Error('Not a valid url');
-  }
-
   const response = await axios.get(url);
   const root = parse(response.data);
 
@@ -27,7 +22,17 @@ const parseGood = async (competitorId, goodId, url, {parsingRules, goods}) => {
   const time = moment().format();
   console.log(price, time);
 
-  // Competitors.update({_id: competitorId}, {$set: {goods}});
+  const updatedGoods = goods.map((good) => {
+    if (goodId === good.goodId) {
+      console.log(good)
+      return {
+        goodId, url, status: 'Parsed', time, price,
+      };
+    }
+    return good;
+  });
+
+  Competitors.update({_id: competitorId}, {$set: {goods: updatedGoods}});
 };
 
 Meteor.methods({
@@ -44,8 +49,15 @@ Meteor.methods({
   ),
 
   'competitors.addCompetitorGood': ({competitorId, goodId, url}) => {
-    // Competitors.update({_id: competitorId}, {$addToSet: {goods: {goodId, url, status: 'Parsing'}}});
+    Competitors.update({_id: competitorId}, {
+      $addToSet: {
+        goods: {
+          goodId, url, status: 'Parsing',
+        },
+      },
+    });
     const competitor = Competitors.findOne({_id: competitorId});
     parseGood(competitorId, goodId, url, competitor);
+    console.log('done');
   },
 });
