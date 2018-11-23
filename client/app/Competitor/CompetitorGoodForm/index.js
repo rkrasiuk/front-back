@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import ChevronRight from '@material-ui/icons/CloudUpload';
+import ChevronRight from '@material-ui/icons/ChevronRight';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
