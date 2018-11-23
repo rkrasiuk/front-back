@@ -32,7 +32,7 @@ class CompetitorGoodForm extends Component {
     const form = this.state;
     const {competitorId} = this.props;
 
-    Meteor.call('competitors.addCompetitorGood', {competitorId, ...form}, (err, res) => {
+    Meteor.call('competitors.addCompetitorGood', {competitorId, ...form}, (err) => {
       if (err) {
         alert(err);
         return console.error(err);

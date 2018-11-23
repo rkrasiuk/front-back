@@ -28,7 +28,7 @@ class GoodForm extends Component {
     e.preventDefault();
     const form = this.state;
 
-    Meteor.call('goods.addGood', form, (err, res) => {
+    Meteor.call('goods.addGood', form, (err) => {
       if (err) {
         alert(err);
         return console.error(err);
