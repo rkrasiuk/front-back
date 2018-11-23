@@ -11,3 +11,11 @@
         width: 100%;
     }
 }
+
+.competitor-table {
+    .row .cell:nth-child(2) {
+        width: 100px;
+        padding-right: 30px;
+        word-wrap: break-word;
+    }
+}

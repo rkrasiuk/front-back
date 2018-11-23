@@ -13,6 +13,8 @@ import CompetitorTable from './CompetitorTable';
 import CompetitorGoodForm from './CompetitorGoodForm';
 import Header from '../components/Header';
 
+import './index.scss';
+
 class Competitor extends Component {
   state = {
     addCompetitorGoodModal: false,

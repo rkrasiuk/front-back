@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import uniqueid from 'lodash.uniqueid';
+import moment from 'moment';
 
 import Table from 'components/Table';
 
@@ -18,10 +19,10 @@ class CompetitorTable extends Component {
         {status}
       </div>
       <div className="cell" data-title="Time">
-        {time}
+        {moment(time).format('DD-MM-YYYY')}
       </div>
       <div className="cell" data-title="Price">
-        {`${price} UAH`}
+        {price && `${price} UAH`}
       </div>
     </div>
   );
