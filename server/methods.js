@@ -6,7 +6,7 @@ import moment from 'moment';
 import Competitors from 'collections/competitors';
 import Goods from 'collections/goods';
 
-const parseGood = async (url, parsingRules, goodId) => {
+const parseGood = async (competitorId, goodId, url, {parsingRules, goods}) => {
   if (!isUrl(url)) {
     throw new Meteor.Error('Not a valid url');
   }
@@ -26,6 +26,8 @@ const parseGood = async (url, parsingRules, goodId) => {
   const price = htmlPrice && htmlPrice.firstChild.text && parseInt(htmlPrice.firstChild.text.split(' ').join(''), 10);
   const time = moment().format();
   console.log(price, time);
+
+  // Competitors.update({_id: competitorId}, {$set: {goods}});
 };
 
 Meteor.methods({
@@ -44,7 +46,6 @@ Meteor.methods({
   'competitors.addCompetitorGood': ({competitorId, goodId, url}) => {
     // Competitors.update({_id: competitorId}, {$addToSet: {goods: {goodId, url, status: 'Parsing'}}});
     const competitor = Competitors.findOne({_id: competitorId});
-    const {parsingRules} = competitor;
-    parseGood(url, parsingRules, goodId);
+    parseGood(competitorId, goodId, url, competitor);
   },
 });
