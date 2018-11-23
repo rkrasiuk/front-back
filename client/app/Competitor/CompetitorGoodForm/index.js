@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {withTracker} from 'meteor/react-meteor-data';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import ChevronRight from '@material-ui/icons/CloudUpload';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -76,7 +76,7 @@ class CompetitorGoodForm extends Component {
         />
         <Button variant="contained" color="primary" type="submit" className="competitor-good-form-button">
           Submit
-          <CloudUploadIcon className="right-icon" />
+          <ChevronRight className="right-icon" />
         </Button>
       </form>
     );

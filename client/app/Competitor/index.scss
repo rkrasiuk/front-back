@@ -18,4 +18,11 @@
         padding-right: 30px;
         word-wrap: break-word;
     }
+    .row .cell:nth-child(3) {
+        width: 90px;
+    }
+    .row .cell:nth-child(5) {
+        width: 100px;
+        padding-right: 30px;
+    }
 }
