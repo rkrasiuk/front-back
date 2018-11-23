@@ -25,7 +25,7 @@ class Competitor extends Component {
 
   renderAddCompetitorGoodModal = () => (
     <Modal open={this.state.addCompetitorGoodModal} handleClose={this.handleAddCompetitorGoodClose}>
-      <CompetitorGoodForm />
+      <CompetitorGoodForm competitorId={this.props.match.params.id} />
       <VehicleSale />
     </Modal>
   );

@@ -30,8 +30,9 @@ class CompetitorGoodForm extends Component {
   submit = (e) => {
     e.preventDefault();
     const form = this.state;
+    const {competitorId} = this.props;
 
-    Meteor.call('', form, (err, res) => {
+    Meteor.call('competitors.addCompetitorGood', {competitorId, ...form}, (err, res) => {
       if (err) {
         alert(err);
         return console.error(err);
