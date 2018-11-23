@@ -2,20 +2,39 @@ import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
+import {NavLink} from 'react-router-dom';
 import {withTracker} from 'meteor/react-meteor-data';
-import uniqueid from 'lodash.uniqueid';
 
 import Competitors from 'collections/competitors';
+import Modal from 'components/Modal';
+import Logistics from 'illustrations/logistics';
+import VehicleSale from 'illustrations/vehiclesale';
 
 import CompetitorTable from './CompetitorTable';
+import CompetitorGoodForm from './CompetitorGoodForm';
 import Header from '../components/Header';
 
 class Competitor extends Component {
+  state = {
+    addCompetitorGoodModal: false,
+  };
+
+  handleAddClick = () => this.setState({addCompetitorGoodModal: true});
+
+  handleAddCompetitorGoodClose = () => this.setState({addCompetitorGoodModal: false});
+
+  renderAddCompetitorGoodModal = () => (
+    <Modal open={this.state.addCompetitorGoodModal} handleClose={this.handleAddCompetitorGoodClose}>
+      <CompetitorGoodForm />
+      <VehicleSale />
+    </Modal>
+  );
+
   render() {
     const competitorId = this.props.match.params.id;
     const competitor = this.props.competitors.find(({_id}) => competitorId === _id);
 
-    console.log(competitor);
+    // TODO: Change empty page message
     if (!competitor) {
       return (
         <div style={{width: '100vw', padding: '2vh 4vw'}}>
@@ -32,9 +51,11 @@ class Competitor extends Component {
           <Button onClick={this.handleAddClick} variant="fab" color="primary" aria-label="Add" className="edit-button">
             <AddIcon />
           </Button>
-          <Button variant="fab" color="primary" aria-label="Edit" className="edit-button">
-            <Icon>chevron_left</Icon>
-          </Button>
+          <NavLink to="/competitors">
+            <Button onClick={this.handleBackClick} variant="fab" color="primary" aria-label="Edit" className="edit-button">
+              <Icon>chevron_left</Icon>
+            </Button>
+          </NavLink>
         </Header>
         <div className="content">
           <div className="competitor-info">
@@ -44,6 +65,7 @@ class Competitor extends Component {
             <CompetitorTable goods={goods} />
           </div>
         </div>
+        {this.renderAddCompetitorGoodModal()}
       </div>
     );
   }

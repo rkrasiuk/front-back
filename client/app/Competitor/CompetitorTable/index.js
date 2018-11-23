@@ -5,7 +5,7 @@ import Table from 'components/Table';
 
 class CompetitorTable extends Component {
   renderRow = ({
-    goodId, url, parsed, time, price,
+    goodId, url, status, time, price,
   }) => (
     <div className="row" key={uniqueid(goodId)}>
       <div className="cell" data-title="Good ID">
@@ -14,8 +14,8 @@ class CompetitorTable extends Component {
       <div className="cell" data-title="URL">
         {url}
       </div>
-      <div className="cell" data-title="Parsed">
-        {parsed}
+      <div className="cell" data-title="Status">
+        {status}
       </div>
       <div className="cell" data-title="Time">
         {time}
@@ -31,7 +31,7 @@ class CompetitorTable extends Component {
 
     return (
       <Table
-        headers={['Good ID', 'URL', 'Parsed', 'Time', 'Price']}
+        headers={['Good ID', 'URL', 'Status', 'Time', 'Price']}
         rowRenderer={this.renderRow}
         data={goods}
       />

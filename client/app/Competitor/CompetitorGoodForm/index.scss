@@ -1,0 +1,25 @@
+.competitor-good-form {
+    display: flex;
+    flex-direction: column;
+    min-width: 50%;
+    height: 100%;
+    
+    .competitor-good-form-title {
+        font-size: 2rem;
+        color: #7C8893;
+        margin-bottom: 10%;
+    }
+
+    .competitor-good-form-input {
+        width: 80%;
+    }
+
+    .competitor-good-form-button {
+        width: 30%;
+        margin-top: 25%;
+
+        .right-icon {
+            margin-left: 22px;
+        }
+    }
+}

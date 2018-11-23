@@ -9,7 +9,7 @@ const competitorSchema = new SimpleSchema({
   'goods.$': Object,
   'goods.$.goodId': String,
   'goods.$.url': String,
-  'goods.$.parsed': Boolean,
+  'goods.$.status': String,
   'goods.$.time': String,
   'goods.$.price': String,
 });
