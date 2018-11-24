@@ -19,6 +19,7 @@ class GoodForm extends Component {
   static propTypes = {
     handleClose: PropTypes.func.isRequired,
     buttonText: PropTypes.string.isRequired,
+    headerText: PropTypes.string.isRequired,
     values: PropTypes.shape({}),
   };
 
@@ -52,7 +53,7 @@ class GoodForm extends Component {
 
     return (
       <form className="good-form" autoComplete="off" onSubmit={this.submit}>
-        <h3 className="good-form-title">Add Good</h3>
+        <h3 className="good-form-title">{this.props.headerText}</h3>
         <TextField
           label="Good ID"
           className="good-form-input"

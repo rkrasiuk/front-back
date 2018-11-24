@@ -38,6 +38,7 @@
     "react-dropdown": "^1.6.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-tooltip": "^3.9.0",
     "simpl-schema": "^1.5.3",
     "yarn": "^1.9.4"
   },

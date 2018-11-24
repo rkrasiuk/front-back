@@ -4,7 +4,7 @@ import React, {PureComponent} from 'react';
 class InProgress extends PureComponent {
   render() {
     return (
-      <svg id="b1d80de4-06cb-4b2d-9c4c-b14d42818646" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="1009.54" height="750.39" viewBox="0 0 1009.54 750.39">
+      <svg id="b1d80de4-06cb-4b2d-9c4c-b14d42818646" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="504.77px" height="375.195px" viewBox="0 0 1009.54 750.39">
         <defs>
             <linearGradient id="fd95d79a-5cd9-41a5-a6ba-ef65272c784a" x1="361.1" y1="819.7" x2="361.1" y2="219" gradientUnits="userSpaceOnUse">
               <stop offset="0" stopColor="gray" stopOpacity="0.25" />

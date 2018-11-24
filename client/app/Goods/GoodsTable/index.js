@@ -1,29 +1,36 @@
 import React, {Component} from 'react';
 import uniqueid from 'lodash.uniqueid';
 import {withTracker} from 'meteor/react-meteor-data';
+import PropTypes from 'prop-types';
 
 import Goods from 'collections/goods';
 import Table from 'components/Table';
 
 class GoodsTable extends Component {
-  renderRow = ({
-    _id: goodId, vendorCode, name, brand, price,
-  }) => (
-    <div className="row" key={uniqueid(goodId)}>
+  static propTypes = {
+    onRowClick: PropTypes.func,
+  };
+
+  static defaultProps = {
+    onRowClick: () => null,
+  };
+
+  renderRow = good => (
+    <div className="row" key={uniqueid(good._id)} onClick={() => this.props.onRowClick(good)}>
       <div className="cell" data-title="Good ID">
-        {goodId}
+        {good._id}
       </div>
       <div className="cell" data-title="Vendor Code">
-        {vendorCode}
+        {good.vendorCode}
       </div>
       <div className="cell" data-title="Name">
-        {name}
+        {good.name}
       </div>
       <div className="cell" data-title="Brand">
-        {brand}
+        {good.brand}
       </div>
       <div className="cell" data-title="Price">
-        {`${price} UAH`}
+        {`${good.price} UAH`}
       </div>
     </div>
   );
