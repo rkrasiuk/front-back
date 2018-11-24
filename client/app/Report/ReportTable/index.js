@@ -3,6 +3,8 @@ import uniqueid from 'lodash.uniqueid';
 
 import Table from 'components/Table';
 
+const byBrand = brandFilter => ({brand}) => brand === brandFilter;
+
 class ReportTable extends Component {
   renderRow = ({
     _id: goodId, name, brand, price,
@@ -33,13 +35,14 @@ class ReportTable extends Component {
   );
 
   render() {
-    const {goods} = this.props;
+    const {goods, filters: {brand, price}} = this.props;
+    const goodsByBrand = (brand && goods.filter(byBrand(brand))) || goods;
 
     return (
       <Table
         headers={['Good ID', 'Name', 'Brand', 'Price', 'Time', 'Competitor', 'Price']}
         rowRenderer={this.renderRow}
-        data={goods}
+        data={goodsByBrand}
       />
     );
   }

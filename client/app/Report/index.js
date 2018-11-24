@@ -9,6 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import {withTracker} from 'meteor/react-meteor-data';
 import uniqueid from 'lodash.uniqueid';
 
+import Competitors from 'collections/competitors';
 import Goods from 'collections/goods';
 import Header from '../components/Header';
 import NavigationBar from '../components/Navigation';
@@ -25,13 +26,20 @@ class Report extends Component {
 
   handleChange = ({target: {name, value}}) => this.setState({[name]: value});
 
+  // filterGoods = () => {
+  //   const {goods} = this.props;
+  //   const {brand: brandFilter, price: priceFilter, competitor: competitorFilter} = this.state;
+  //   const byBrand = (({brand}) => brand === brandFilter);
+  //   const byPrice = (({price}) => price === priceFilter);
+  //   const byBrand = (({brand}) => brand === brandFilter);
+  // };
+
   render() {
-    const brands = ['Brand 1', 'Brand 2', 'Brand 3'];
+    const {goods, competitors: allCompetitors} = this.props;
+
+    const brands = [...new Set(goods.map(({brand}) => brand))];
     const prices = ['Price 1', 'Price 2', 'Price 3'];
-    const competitors = [
-      'Competitor 1', 'Competitor 2', 'Competitor 3',
-      'Competitor 1', 'Competitor 2', 'Competitor 3',
-    ];
+    const competitors = [...new Set(allCompetitors.map(({name}) => name))];
 
     return (
       <div className="app">
@@ -102,7 +110,7 @@ class Report extends Component {
         <div className="content">
           <NavigationBar activeLink={this.props.match.url} />
           <div className="report-table">
-            <ReportTable goods={this.props.goods} />
+            <ReportTable goods={goods} filters={this.state} />
           </div>
         </div>
       </div>
@@ -111,6 +119,7 @@ class Report extends Component {
 }
 
 export default withTracker(() => ({
-  ready: Meteor.subscribe('goods.list').ready(),
+  ready: Meteor.subscribe('goods.list').ready() && Meteor.subscribe('competitors.list').ready(),
   goods: Goods.find().fetch(),
+  competitors: Competitors.find().fetch(),
 }))(Report);
