@@ -18,9 +18,15 @@ const initialForm = {
 class GoodForm extends Component {
   static propTypes = {
     handleClose: PropTypes.func.isRequired,
+    buttonText: PropTypes.string.isRequired,
+    values: PropTypes.shape({}),
   };
 
-  state = initialForm;
+  static defaultProps = {
+    values: null,
+  };
+
+  state = this.props.values || initialForm;
 
   handleChange = name => ({target: {value}}) => this.setState({[name]: value});
 
@@ -93,7 +99,7 @@ class GoodForm extends Component {
           }}
         />
         <Button variant="contained" color="primary" type="submit" className="good-form-button">
-          Submit
+          {this.props.buttonText}
           <ChevronRight className="right-icon" />
         </Button>
       </form>

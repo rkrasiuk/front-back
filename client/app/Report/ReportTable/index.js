@@ -35,7 +35,7 @@ class ReportTable extends Component {
   );
 
   render() {
-    const {goods, filters: {brand, price}} = this.props;
+    const {goods, filters: {brand}} = this.props;
     const goodsByBrand = (brand && goods.filter(byBrand(brand))) || goods;
 
     return (

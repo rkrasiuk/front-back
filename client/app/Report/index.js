@@ -67,7 +67,7 @@ class Report extends Component {
             </Select>
           </FormControl>
           <FormControl className="report-select">
-            <InputLabel htmlFor="price-select">Price</InputLabel>
+            <InputLabel htmlFor="price-select">{'Competitor\'s Price'}</InputLabel>
             <Select
               value={this.state.price}
               onChange={this.handleChange}

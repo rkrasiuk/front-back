@@ -16,15 +16,30 @@ import './index.scss';
 class GoodsPage extends Component {
   state = {
     addGoodModal: false,
+    editGoodModal: false,
   };
 
   handleAddClick = () => this.setState({addGoodModal: true});
 
+  handleEditClick = () => this.setState({editGoodModal: true});
+
   handleAddGoodClose = () => this.setState({addGoodModal: false});
+
+  handleEditGoodClose = () => this.setState({editGoodModal: false});
 
   renderAddGoodModal = () => (
     <Modal open={this.state.addGoodModal} handleClose={this.handleAddGoodClose}>
-      <GoodForm handleClose={this.handleAddGoodClose} />
+      <GoodForm handleClose={this.handleAddGoodClose} buttonText="Submit" />
+      <Logistics />
+    </Modal>
+  );
+
+  renderEditGoodModal = () => (
+    <Modal open={this.state.editGoodModal} handleClose={this.handleEditGoodClose}>
+      <GoodForm
+        handleClose={this.handleEditGoodClose}
+        buttonText="Save"
+      />
       <Logistics />
     </Modal>
   );
@@ -36,7 +51,7 @@ class GoodsPage extends Component {
           <Button onClick={this.handleAddClick} variant="fab" color="primary" aria-label="Add" className="edit-button">
             <AddIcon />
           </Button>
-          <Button variant="fab" color="primary" aria-label="Edit" className="edit-button">
+          <Button onClick={this.handleEditClick} variant="fab" color="primary" aria-label="Edit" className="edit-button">
             <Icon>edit_icon</Icon>
           </Button>
         </Header>
@@ -47,6 +62,7 @@ class GoodsPage extends Component {
           </div>
         </div>
         {this.renderAddGoodModal()}
+        {this.renderEditGoodModal()}
       </div>
     );
   }
