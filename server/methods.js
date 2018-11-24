@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {parse} from 'node-html-parser';
+import {parse, NodeType} from 'node-html-parser';
 import moment from 'moment';
 
 import Competitors from 'collections/competitors';
@@ -52,6 +52,8 @@ Meteor.methods({
   'competitors.addCompetitor': ({name, parsingRules}) => (
     Competitors.insert({name, parsingRules: parsingRules || 'None', goods: []})
   ),
+
+  'competitors.removeCompetitor': ({_id}) => Competitors.remove({_id}),
 
   'competitors.addCompetitorGood': ({competitorId, goodId, url}) => {
     Competitors.update({_id: competitorId}, {
