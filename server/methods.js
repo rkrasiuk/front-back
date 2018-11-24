@@ -20,7 +20,6 @@ const parseGood = async (competitorId, goodId, url, {parsingRules, goods}) => {
 
   const price = htmlPrice && htmlPrice.firstChild.text && parseInt(htmlPrice.firstChild.text.split(' ').join(''), 10);
   const time = moment().format();
-  console.log(price, time);
 
   const updatedGoods = goods.map((good) => {
     if (goodId === good.goodId) {
@@ -44,6 +43,12 @@ Meteor.methods({
     })
   ),
 
+  'goods.updateGood': ({
+    goodId, vendorCode, price, ...rest,
+  }) => (
+    Goods.update({_id: goodId}, {$set: {vendorCode: Number(vendorCode), price: Number(price), ...rest}})
+  ),
+
   'competitors.addCompetitor': ({name, parsingRules}) => (
     Competitors.insert({name, parsingRules: parsingRules || 'None', goods: []})
   ),
@@ -58,6 +63,5 @@ Meteor.methods({
     });
     const competitor = Competitors.findOne({_id: competitorId});
     parseGood(competitorId, goodId, url, competitor);
-    console.log('done');
   },
 });

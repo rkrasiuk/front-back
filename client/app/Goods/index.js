@@ -29,7 +29,7 @@ class GoodsPage extends Component {
 
   handleAddGoodClose = () => this.setState({addGoodModal: false});
 
-  handleEditGoodClose = () => this.setState({editGoodModal: false});
+  handleEditGoodClose = () => this.setState({editGoodModal: false, editMode: false});
 
   toggleEditMode = () => this.setState(({editMode}) => ({editMode: !editMode}));
 

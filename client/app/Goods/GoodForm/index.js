@@ -34,13 +34,15 @@ class GoodForm extends Component {
   submit = (e) => {
     e.preventDefault();
     const form = this.state;
+    const methodName = this.props.values ? 'goods.updateGood' : 'goods.addGood';
+    const successMessage = this.props.values ? 'Item Updated' : 'Item Added';
 
-    Meteor.call('goods.addGood', form, (err) => {
+    Meteor.call(methodName, form, (err) => {
       if (err) {
         alert(err);
         return console.error(err);
       }
-      alert('Item Added');
+      alert(successMessage);
       this.setState(initialForm);
       return this.props.handleClose();
     });
@@ -61,6 +63,7 @@ class GoodForm extends Component {
           onChange={this.handleChange('goodId')}
           required
           margin="normal"
+          disabled={!!this.props.values}
         />
         <TextField
           label="Vendor Code"
