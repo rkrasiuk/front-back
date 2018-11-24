@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {parse, NodeType} from 'node-html-parser';
+import {parse} from 'node-html-parser';
 import moment from 'moment';
 
 import Competitors from 'collections/competitors';

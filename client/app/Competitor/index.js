@@ -38,9 +38,7 @@ class Competitor extends Component {
     // TODO: Change empty page message
     if (!competitor) {
       return (
-        <div style={{width: '100vw', padding: '2vh 4vw'}}>
-          <p>No goods are registered for this competitor</p>
-        </div>
+        <div />
       );
     }
 
