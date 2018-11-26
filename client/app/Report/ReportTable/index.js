@@ -103,11 +103,12 @@ class ReportTable extends Component {
   determine = ({_id: goodId, ...rest}) => {
     const {competitors} = this.props;
     const competitorgoods = competitors
-      .filter(({goods}) => goods.find(({goodId: parsedGoodId}) => goodId === parsedGoodId))
+      .filter(({goods}) => goods.find(({goodId: parsedGoodId, price}) => goodId === parsedGoodId && price))
       .map(({goods, ...competitor}) => ({
         ...competitor,
-        goods: goods.filter(({goodId: parsedGoodId}) => goodId === parsedGoodId)
+        goods: goods.filter(({goodId: parsedGoodId, price}) => goodId === parsedGoodId && price),
       }));
+    console.log(competitorgoods)
     return competitorgoods.length ? this.renderRow({_id: goodId, ...rest, competitorgoods}) : null;
   };
 
