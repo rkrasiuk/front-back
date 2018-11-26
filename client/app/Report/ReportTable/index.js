@@ -26,7 +26,7 @@ class ReportTable extends Component {
             {brand}
           </div>
           <div className="cell" data-title="Price">
-            {`${price} UAH`}
+            {price && `${price} UAH`}
           </div>
           <div className="cell" data-title="Competitor">
             {competitorName}
@@ -39,63 +39,8 @@ class ReportTable extends Component {
           </div>
         </div>
 
-        {
-          goods.slice(1).map(remainingGood => (
-            <div className="row" key={uniqueid(goodId)}>
-              <div className="cell" data-title="Good ID" />
-              <div className="cell" data-title="Name" />
-              <div className="cell" data-title="Brand" />
-              <div className="cell" data-title="Price" />
-              <div className="cell" data-title="Competitor" />
-              <div className="cell" data-title="Time">
-                {moment(remainingGood.time).format('DD.MM.YYYY')}
-              </div>
-              <div className="cell" data-title="Price">
-                {remainingGood.price && `${remainingGood.price} UAH`}
-              </div>
-            </div>
-          ))
-        }
-
-        {
-          competitorgoods.slice(1).map(remainingCompetitor => (
-            <Fragment>
-              <div className="row" key={uniqueid(goodId)}>
-                <div className="cell" data-title="Good ID" />
-                <div className="cell" data-title="Name" />
-                <div className="cell" data-title="Brand" />
-                <div className="cell" data-title="Price" />
-                <div className="cell" data-title="Competitor">
-                  {remainingCompetitor.name}
-                </div>
-                <div className="cell" data-title="Time">
-                  {moment(remainingCompetitor.goods[0].time).format('DD.MM.YYYY')}
-                </div>
-                <div className="cell" data-title="Price">
-                  {remainingCompetitor.goods[0].price && `${remainingCompetitor.goods[0].price} UAH`}
-                </div>
-              </div>
-
-              {
-                remainingCompetitor.goods.slice(1).map(remainingCompetitorGood => (
-                  <div className="row" key={uniqueid(goodId)}>
-                    <div className="cell" data-title="Good ID" />
-                    <div className="cell" data-title="Name" />
-                    <div className="cell" data-title="Brand" />
-                    <div className="cell" data-title="Price" />
-                    <div className="cell" data-title="Competitor" />
-                    <div className="cell" data-title="Time">
-                      {moment(remainingCompetitorGood.time).format('DD.MM.YYYY')}
-                    </div>
-                    <div className="cell" data-title="Price">
-                      {remainingCompetitorGood.price && `${remainingCompetitorGood.price} UAH`}
-                    </div>
-                  </div>
-                ))
-              }
-            </Fragment>
-          ))
-        }
+        {goods.slice(1).map(() => this.renderRow({competitorgoods: [{goods: competitorgoods[0].goods.slice(1)}]}))}
+        {competitorgoods.slice(1).map(() => this.renderRow({competitorgoods: competitorgoods.slice(1)}))}
       </Fragment>
     );
   };
