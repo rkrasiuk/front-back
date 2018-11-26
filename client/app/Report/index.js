@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
 import BookOutlined from '@material-ui/icons/BookOutlined';
-import Icon from '@material-ui/core/Icon';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -26,7 +25,10 @@ class Report extends Component {
 
   handleChange = ({target: {name, value}}) => this.setState({[name]: value});
 
-  createReport = () => {}
+  createReport = () => {
+
+    // XLSX.writeFile(workbook, 'out.xlsb');
+  };
 
   render() {
     const {goods, competitors} = this.props;
