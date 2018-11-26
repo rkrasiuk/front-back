@@ -92,12 +92,6 @@ class Report extends Component {
               ))}
             </Select>
           </FormControl>
-          <Button onClick={this.handleAddClick} variant="fab" color="primary" aria-label="Add" className="edit-button">
-            <AddIcon />
-          </Button>
-          <Button variant="fab" color="primary" aria-label="Edit" className="edit-button">
-            <Icon>edit_icon</Icon>
-          </Button>
         </Header>
         <div className="content">
           <NavigationBar activeLink={this.props.match.url} />
