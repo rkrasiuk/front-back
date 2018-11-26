@@ -26,19 +26,11 @@ class Report extends Component {
 
   handleChange = ({target: {name, value}}) => this.setState({[name]: value});
 
-  // filterGoods = () => {
-  //   const {goods} = this.props;
-  //   const {brand: brandFilter, price: priceFilter, competitor: competitorFilter} = this.state;
-  //   const byBrand = (({brand}) => brand === brandFilter);
-  //   const byPrice = (({price}) => price === priceFilter);
-  //   const byBrand = (({brand}) => brand === brandFilter);
-  // };
-
   render() {
     const {goods, competitors} = this.props;
 
     const brands = [...new Set(goods.map(({brand}) => brand))];
-    const prices = ['Price 1', 'Price 2', 'Price 3'];
+    const prices = ['less', 'equal', 'more'];
     const competitorNames = [...new Set(competitors.map(({name}) => name))];
 
     return (

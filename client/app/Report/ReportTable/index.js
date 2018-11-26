@@ -6,6 +6,14 @@ import Table from 'components/Table';
 
 const byBrand = brandFilter => ({brand}) => brand === brandFilter;
 
+const byPrice = (goodPrice, priceFilter) => ({price: competitorPrice}) => {
+  switch (priceFilter) {
+    case 'less': return competitorPrice < goodPrice;
+    case 'more': return competitorPrice > goodPrice;
+    default: return competitorPrice === goodPrice;
+  }
+};
+
 class ReportTable extends Component {
   renderRow = ({
     _id: goodId, name, brand, price, competitorgoods,
@@ -45,7 +53,7 @@ class ReportTable extends Component {
     );
   };
 
-  filterAndGatherGoodData = filters => ({_id: goodId, ...rest}) => {
+  filterAndGatherGoodData = filters => ({_id: goodId, price: goodPrice, ...rest}) => {
     const {competitors} = this.props;
     const competitorgoods = competitors
       .filter(({goods}) => goods.find(({goodId: parsedGoodId, price}) => goodId === parsedGoodId && price))
@@ -53,10 +61,18 @@ class ReportTable extends Component {
         ...competitor,
         goods: goods.filter(({goodId: parsedGoodId, price}) => goodId === parsedGoodId && price),
       }));
+
     const competitorgoodsByCompetitor = (filters.competitor && competitorgoods
       .filter(({name}) => name === filters.competitor)) || competitorgoods;
-    return competitorgoodsByCompetitor.length ? this.renderRow({
-      _id: goodId, ...rest, competitorgoods: competitorgoodsByCompetitor,
+    const competitorgoodsFiltered = (filters.price && competitorgoodsByCompetitor
+      .filter(({goods}) => goods.find((byPrice(goodPrice, filters.price))))
+      .map(({goods, ...competitor}) => ({
+        ...competitor,
+        goods: goods.filter(byPrice(goodPrice, filters.price)),
+      }))) || competitorgoodsByCompetitor;
+
+    return competitorgoodsFiltered.length ? this.renderRow({
+      _id: goodId, price: goodPrice, ...rest, competitorgoods: competitorgoodsFiltered,
     }) : null;
   };
 
