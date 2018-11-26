@@ -30,7 +30,7 @@ class GoodsTable extends Component {
         {good.brand}
       </div>
       <div className="cell" data-title="Price">
-        {`${good.price} UAH`}
+        {good.price && `${good.price} UAH`}
       </div>
     </div>
   );

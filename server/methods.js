@@ -10,7 +10,7 @@ const parseGood = async (competitorId, goodId, url, {parsingRules, goods}) => {
   const root = parse(response.data);
 
   let htmlPrice;
-  
+
   if (url.match(/.*((mobilluck)|(nobu)).*/gm)) {
     htmlPrice = root.querySelector('.price');
   } else if (url.match(/.*a-techno.*/gm)) {
@@ -49,6 +49,16 @@ Meteor.methods({
   }) => (
     Goods.update({_id: goodId}, {$set: {vendorCode: Number(vendorCode), price: Number(price), ...rest}})
   ),
+
+
+  'goods.parseFile': ({data}) => {
+    if (!data) {
+      throw new Meteor.Error('Not valid data');
+    }
+    // const headers = data[0];
+    const info = data.slice(1);
+    info.forEach(record => Goods.insert({_id: `${record[0]}`, vendorCode: record[1], name: record[2]}));
+  },
 
   'competitors.addCompetitor': ({name, parsingRules}) => (
     Competitors.insert({name, parsingRules: parsingRules || 'None', goods: []})

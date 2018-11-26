@@ -5,6 +5,7 @@ import Icon from '@material-ui/core/Icon';
 import Input from '@material-ui/core/Input';
 import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
 import ReactTooltip from 'react-tooltip';
+import XLSX from 'xlsx';
 
 import Modal from 'components/Modal';
 import Logistics from 'illustrations/logistics';
@@ -39,15 +40,38 @@ class GoodsPage extends Component {
 
   triggerInputFile = () => this.fileInput.click();
 
-  handleFileUpload = ({target: {files}}) => (
-    Meteor.call('', {files}, (err) => {
-      if (err) {
-        alert(err);
-        return console.error(err);
+  handleFileUpload = ({target}) => {
+    const file = target.files[0];
+    const reader = new FileReader();
+
+    const rABS = !!reader.readAsBinaryString;
+    reader.onload = (e) => {
+      const bstr = e.target.result;
+      const wb = XLSX.read(bstr, {type: rABS ? 'binary' : 'array'});
+      const wsname = wb.SheetNames[0];
+      const ws = wb.Sheets[wsname];
+      /* Convert array of arrays */
+      const data = XLSX.utils.sheet_to_json(ws, {header: 1});
+      console.log(data)
+      const response = confirm('File uploaded successfully. Are you sure you want to add records to DB?');
+      if (!response) {
+        return;
       }
-      alert('File uploaded successfully');
-    })
-  );
+      Meteor.call('goods.parseFile', {data}, (err) => {
+        if (err) {
+          alert(err);
+          return console.error(err);
+        }
+        alert('Records added');
+      });
+    };
+
+    if (rABS) {
+      reader.readAsBinaryString(file);
+    } else {
+      reader.readAsArrayBuffer(file);
+    }
+  };
 
   renderAddGoodModal = () => (
     <Modal open={this.state.addGoodModal} handleClose={this.handleAddGoodClose}>
@@ -92,9 +116,9 @@ class GoodsPage extends Component {
               }}
               type="file"
               name=""
-              id=""
+              id="file"
               style={{display: 'none'}}
-              onChange={(e) => this.handleChange(e.target.files)}
+              onChange={this.handleFileUpload}
             />
             <FileCopyOutlined />
           </Button>
