@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
+import BookOutlined from '@material-ui/icons/BookOutlined';
+import Icon from '@material-ui/core/Icon';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -24,22 +26,18 @@ class Report extends Component {
 
   handleChange = ({target: {name, value}}) => this.setState({[name]: value});
 
+  createReport = () => {}
+
   render() {
     const {goods, competitors} = this.props;
 
-    const brands = [...new Set(goods.map(({brand}) => brand))];
+    const brands = [...new Set(goods.filter(({brand}) => brand).map(({brand}) => brand))];
     const prices = ['less', 'equal', 'more'];
     const competitorNames = [...new Set(competitors.map(({name}) => name))];
 
     return (
       <div className="app">
         <Header>
-          {
-            // brand
-            // competitor
-            // date
-            // our price compared to competitor's
-          }
           <FormControl className="report-select">
             <InputLabel htmlFor="brand-select">Brand</InputLabel>
             <Select
@@ -90,6 +88,9 @@ class Report extends Component {
               ))}
             </Select>
           </FormControl>
+          <Button onClick={this.handleAddClick} variant="fab" color="primary" aria-label="Add" className="edit-button">
+            <BookOutlined />
+          </Button>
         </Header>
         <div className="content">
           <NavigationBar activeLink={this.props.match.url} />

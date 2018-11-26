@@ -20,6 +20,7 @@ class ReportTable extends Component {
   }) => {
     const {name: competitorName, goods} = competitorgoods[0];
     const {time, price: competitorPrice} = goods[0];
+    console.log(competitorgoods[0].goods.slice(1))
 
     return (
       <Fragment>
@@ -47,8 +48,8 @@ class ReportTable extends Component {
           </div>
         </div>
 
-        {goods.slice(1).map(() => this.renderRow({competitorgoods: [{goods: competitorgoods[0].goods.slice(1)}]}))}
-        {competitorgoods.slice(1).map(() => this.renderRow({competitorgoods: competitorgoods.slice(1)}))}
+        {goods.length > 1 && this.renderRow({competitorgoods: [{goods: competitorgoods[0].goods.slice(1)}]})}
+        {competitorgoods.length > 1 && this.renderRow({competitorgoods: competitorgoods.slice(1)})}
       </Fragment>
     );
   };
