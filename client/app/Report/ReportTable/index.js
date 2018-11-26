@@ -100,7 +100,7 @@ class ReportTable extends Component {
     );
   };
 
-  determine = ({_id: goodId, ...rest}) => {
+  filterAndGatherGoodData = filters => ({_id: goodId, ...rest}) => {
     const {competitors} = this.props;
     const competitorgoods = competitors
       .filter(({goods}) => goods.find(({goodId: parsedGoodId, price}) => goodId === parsedGoodId && price))
@@ -108,18 +108,21 @@ class ReportTable extends Component {
         ...competitor,
         goods: goods.filter(({goodId: parsedGoodId, price}) => goodId === parsedGoodId && price),
       }));
-    console.log(competitorgoods)
-    return competitorgoods.length ? this.renderRow({_id: goodId, ...rest, competitorgoods}) : null;
+    const competitorgoodsByCompetitor = (filters.competitor && competitorgoods
+      .filter(({name}) => name === filters.competitor)) || competitorgoods;
+    return competitorgoodsByCompetitor.length ? this.renderRow({
+      _id: goodId, ...rest, competitorgoods: competitorgoodsByCompetitor,
+    }) : null;
   };
 
   render() {
-    const {goods, filters: {brand}} = this.props;
-    const goodsByBrand = (brand && goods.filter(byBrand(brand))) || goods;
+    const {goods, filters} = this.props;
+    const goodsByBrand = (filters.brand && goods.filter(byBrand(filters.brand))) || goods;
 
     return (
       <Table
         headers={['Good ID', 'Name', 'Brand', 'Price', 'Competitor', 'Time', 'Price']}
-        rowRenderer={this.determine}
+        rowRenderer={this.filterAndGatherGoodData(filters)}
         data={goodsByBrand}
       />
     );
