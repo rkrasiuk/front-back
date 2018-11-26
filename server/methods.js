@@ -26,7 +26,7 @@ const parseGood = async (competitorId, goodId, url, {parsingRules, goods}) => {
     if (goodId === good.goodId) {
       console.log(good)
       return {
-        goodId, url, status: 'Parsed', time, price,
+        goodId, url, status: price ? 'Parsed' : 'Failed', time, price,
       };
     }
     return good;
