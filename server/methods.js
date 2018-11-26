@@ -10,6 +10,7 @@ const parseGood = async (competitorId, goodId, url, {parsingRules, goods}) => {
   const root = parse(response.data);
 
   let htmlPrice;
+  
   if (url.match(/.*((mobilluck)|(nobu)).*/gm)) {
     htmlPrice = root.querySelector('.price');
   } else if (url.match(/.*a-techno.*/gm)) {

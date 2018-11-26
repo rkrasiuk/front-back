@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
+import Input from '@material-ui/core/Input';
+import FileCopyOutlined from '@material-ui/icons/FileCopyOutlined';
 import ReactTooltip from 'react-tooltip';
 
 import Modal from 'components/Modal';
@@ -23,6 +25,8 @@ class GoodsPage extends Component {
     editValues: null,
   };
 
+  fileInput = React.createRef();
+
   handleAddClick = () => this.setState({addGoodModal: true});
 
   handleEditClick = ({_id, ...rest}) => this.setState({editGoodModal: true, editValues: {goodId: _id, ...rest}});
@@ -32,6 +36,18 @@ class GoodsPage extends Component {
   handleEditGoodClose = () => this.setState({editGoodModal: false, editMode: false});
 
   toggleEditMode = () => this.setState(({editMode}) => ({editMode: !editMode}));
+
+  triggerInputFile = () => this.fileInput.click();
+
+  handleFileUpload = ({target: {files}}) => (
+    Meteor.call('', {files}, (err) => {
+      if (err) {
+        alert(err);
+        return console.error(err);
+      }
+      alert('File uploaded successfully');
+    })
+  );
 
   renderAddGoodModal = () => (
     <Modal open={this.state.addGoodModal} handleClose={this.handleAddGoodClose}>
@@ -63,7 +79,33 @@ class GoodsPage extends Component {
           <Button onClick={this.handleAddClick} variant="fab" color="primary" aria-label="Add" className="edit-button">
             <AddIcon />
           </Button>
-          <Button onClick={this.toggleEditMode} data-tip="React-tooltip" variant="fab" color={this.state.editMode ? 'default' : 'primary'} aria-label="Edit" className="edit-button">
+          <Button
+            onClick={this.triggerInputFile}
+            variant="fab"
+            color="primary"
+            aria-label="Add"
+            className="edit-button"
+          >
+            <Input
+              inputRef={(ref) => {
+                this.fileInput = ref;
+              }}
+              type="file"
+              name=""
+              id=""
+              style={{display: 'none'}}
+              onChange={(e) => this.handleChange(e.target.files)}
+            />
+            <FileCopyOutlined />
+          </Button>
+          <Button
+            onClick={this.toggleEditMode}
+            data-tip="React-tooltip"
+            variant="fab"
+            color={this.state.editMode ? 'default' : 'primary'}
+            aria-label="Edit"
+            className="edit-button"
+          >
             <Icon>edit_icon</Icon>
           </Button>
           <ReactTooltip place="top" type="dark" effect="float">
@@ -73,7 +115,7 @@ class GoodsPage extends Component {
         <div className="content">
           <NavigationBar activeLink={this.props.match.url} />
           <div className="goods-table">
-            <GoodsTable onRowClick={this.state.editMode && this.handleEditClick} />
+            <GoodsTable onRowClick={this.state.editMode ? this.handleEditClick : null} />
           </div>
         </div>
         {this.renderAddGoodModal()}
