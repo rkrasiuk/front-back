@@ -37,6 +37,8 @@
         ]
       }
     ],
+    "no-alert": "warn",
+    "no-restricted-globals": "warn",
     "no-confusing-arrow": "warn",
     "object-curly-spacing": [
       "error",

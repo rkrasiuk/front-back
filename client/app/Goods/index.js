@@ -52,7 +52,6 @@ class GoodsPage extends Component {
       const ws = wb.Sheets[wsname];
       /* Convert array of arrays */
       const data = XLSX.utils.sheet_to_json(ws, {header: 1});
-      console.log(data)
       const response = confirm('File uploaded successfully. Are you sure you want to add records to DB?');
       if (!response) {
         return;
