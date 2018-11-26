@@ -20,7 +20,6 @@ class ReportTable extends Component {
   }) => {
     const {name: competitorName, goods} = competitorgoods[0];
     const {time, price: competitorPrice} = goods[0];
-    console.log(competitorgoods[0].goods.slice(1))
 
     return (
       <Fragment>
