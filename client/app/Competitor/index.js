@@ -51,7 +51,13 @@ class Competitor extends Component {
             <AddIcon />
           </Button>
           <NavLink to="/competitors">
-            <Button onClick={this.handleBackClick} variant="fab" color="primary" aria-label="Edit" className="edit-button">
+            <Button
+              onClick={this.handleBackClick}
+              variant="fab"
+              color="primary"
+              aria-label="Edit"
+              className="edit-button"
+            >
               <Icon>chevron_left</Icon>
             </Button>
           </NavLink>

@@ -19,7 +19,7 @@ class CompetitorTable extends Component {
         {status}
       </div>
       <div className="cell" data-title="Time">
-        {moment(time).format('DD-MM-YYYY')}
+        {moment(time).format('DD.MM.YYYY')}
       </div>
       <div className="cell" data-title="Price">
         {price && `${price} UAH`}

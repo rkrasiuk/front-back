@@ -35,11 +35,11 @@ class Report extends Component {
   // };
 
   render() {
-    const {goods, competitors: allCompetitors} = this.props;
+    const {goods, competitors} = this.props;
 
     const brands = [...new Set(goods.map(({brand}) => brand))];
     const prices = ['Price 1', 'Price 2', 'Price 3'];
-    const competitors = [...new Set(allCompetitors.map(({name}) => name))];
+    const competitorNames = [...new Set(competitors.map(({name}) => name))];
 
     return (
       <div className="app">
@@ -95,7 +95,7 @@ class Report extends Component {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {competitors.map(competitor => (
+              {competitorNames.map(competitor => (
                 <MenuItem key={uniqueid(competitor)} value={competitor}>{competitor}</MenuItem>
               ))}
             </Select>
@@ -110,7 +110,7 @@ class Report extends Component {
         <div className="content">
           <NavigationBar activeLink={this.props.match.url} />
           <div className="report-table">
-            <ReportTable goods={goods} filters={this.state} />
+            <ReportTable competitors={competitors} goods={goods} filters={this.state} />
           </div>
         </div>
       </div>

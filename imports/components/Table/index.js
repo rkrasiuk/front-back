@@ -14,7 +14,7 @@ class Table extends Component {
   renderHeader = header => <div className="cell" key={uniqueid(header)}>{header}</div>;
 
   render() {
-    const {headers, rowRenderer, data, sample} = this.props;
+    const {headers, rowRenderer, data} = this.props;
 
     return (
       <div className="container-table100">
