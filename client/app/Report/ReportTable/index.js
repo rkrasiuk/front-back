@@ -83,7 +83,7 @@ class ReportTable extends Component {
     return (
       <Table
         headers={['Good ID', 'Name', 'Brand', 'Price', 'Competitor', 'Time', 'Price']}
-        rowRenderer={this.filterAndGatherGoodData(filters)}
+        rowRenderer={this.renderRow}
         data={goodsByBrand}
       />
     );
