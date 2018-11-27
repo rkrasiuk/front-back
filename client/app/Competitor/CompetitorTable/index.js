@@ -1,16 +1,21 @@
 import React, {Component} from 'react';
 import uniqueid from 'lodash.uniqueid';
 import moment from 'moment';
+import {withTracker} from 'meteor/react-meteor-data';
 
 import Table from 'components/Table';
+import Goods from 'collections/goods';
 
 class CompetitorTable extends Component {
   renderRow = ({
-    goodId, url, status, time, price,
+    goodId, name, url, status, time, price,
   }) => (
     <div className="row" key={uniqueid(goodId)}>
       <div className="cell" data-title="Good ID">
         {goodId}
+      </div>
+      <div className="cell" data-title="Name">
+        {name}
       </div>
       <div className="cell" data-title="URL">
         {url}
@@ -28,16 +33,20 @@ class CompetitorTable extends Component {
   );
 
   render() {
-    const {goods} = this.props;
+    const {goods, data = []} = this.props;
+    const competitorgoods = data.map(({goodId, ...rest}) => ({goodId, ...rest, name: goods.length && goods.find(({_id}) => _id === goodId).name}));
 
     return (
       <Table
-        headers={['Good ID', 'URL', 'Status', 'Time', 'Price']}
+        headers={['Good ID', 'Name', 'URL', 'Status', 'Time', 'Price']}
         rowRenderer={this.renderRow}
-        data={goods}
+        data={competitorgoods}
       />
     );
   }
 }
 
-export default CompetitorTable;
+export default withTracker(() => ({
+  ready: Meteor.subscribe('goods.list').ready(),
+  goods: Goods.find({}).fetch(),
+}))(CompetitorTable);

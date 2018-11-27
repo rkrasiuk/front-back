@@ -67,7 +67,7 @@ class Competitor extends Component {
             <h3 className="competitor-name">{name}</h3>
           </div>
           <div className="competitor-table">
-            <CompetitorTable goods={goods} />
+            <CompetitorTable data={goods} />
           </div>
         </div>
         {this.renderAddCompetitorGoodModal()}
